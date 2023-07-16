@@ -1,0 +1,16 @@
+p {
+  text-align: left;
+  word-break: break-word;
+}
+.reading {
+  width: 100%;
+  display: flex;
+  gap: 30px;
+  &-passage {
+    background: #d7e6dc;
+    width: 50%;
+    height: calc(100vh - 260px);
+    overflow: auto;
+    padding: 20px;
+  }
+}

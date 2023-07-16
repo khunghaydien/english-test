@@ -1,4 +1,4 @@
-import Test from "../common/Test"
+import Test from "../Test"
 const Reading = () => {
     return (
         <>

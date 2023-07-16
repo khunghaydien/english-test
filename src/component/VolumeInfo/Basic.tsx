@@ -1,3 +1,5 @@
+import Vote from "../common/Vote"
+
 type Props = {
     id: string,
     volumeBasic: VolumeBasicProps
@@ -7,19 +9,20 @@ export type VolumeBasicProps = {
     logoUrl: string,
     logoAlt: string,
     title: string,
-    vote: number,
+    voteStar: number,
+    voteNumber: number
 }
 
 const VolumeBasic = ({ volumeBasic }: Props) => {
-    const { logoUrl, logoAlt, title, vote } = volumeBasic
+    const { logoUrl, logoAlt, title, voteStar, voteNumber } = volumeBasic
     return (
         <div className="volume-basic">
-            <div className="volume-logo">
+            <div className="volume-basic--logo">
                 <img src={logoUrl} alt={logoAlt} />
             </div>
-            <div className="title-vote">
-                <div className="volume-title">{title}</div>
-                <div className="volume-vote">{vote}</div>
+            <div>
+                <div className="volume-basic--title">{title}</div>
+                <Vote voteNumber={voteNumber} voteStar={voteStar} />
             </div>
         </div>
     )

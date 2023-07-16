@@ -1,25 +1,24 @@
 import VolumeInfo, { Volume } from "../VolumeInfo"
+
 const volume: Volume = {
     basic: {
         logoUrl: `src/assets/ielts-volume.jpg`,
         logoAlt: 'test',
         title: 'IELTS Mock Test 2023 January',
-        vote: 5,
+        voteStar: 5,
+        voteNumber: 1000
     },
     detail: {
         published: '21 Feb 2023',
         views: 3528624,
         testTaken: 744461,
     },
-    practice: {
-        title: 'Reading Practice Test 1'
-    }
 }
-const Test = () => {
+const Header = () => {
     return (
-        <>
-            <VolumeInfo volume={volume} id={'test'} />
-        </>
+        <div className="test-header">
+            <VolumeInfo volume={volume} id={'1'} />
+        </div>
     )
 }
-export default Test
+export default Header
