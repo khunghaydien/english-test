@@ -45,8 +45,8 @@ const VolumeDetail = ({ volumeDetail }: Props) => {
     }]
     return (
         <div className="volume-detail">
-            {volumeDetailList.map(({ icon, label, content, className }) => (
-                <VolumeDetailItem icon={icon} label={label} content={content} className={className} />
+            {volumeDetailList.map(({ icon, label, content, className, id }) => (
+                <VolumeDetailItem key={id} icon={icon} label={label} content={content} className={className} />
             ))}
         </div>
     )
