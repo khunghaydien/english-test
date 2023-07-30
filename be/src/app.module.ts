@@ -4,13 +4,15 @@ import { AppService } from './app.service';
 import { PdfTranslateModule } from './pdf-translate/pdf-translate.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [PdfTranslateModule,
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'pdfs'), // The path to the directory containing PDF files
-      serveRoot: '/pdfs', // The base URL path to serve the PDF files
-    }),],
+      rootPath: join(__dirname, '..', 'pdfs'),
+      serveRoot: '/pdfs', 
+    }),
+    AuthModule,],
   controllers: [AppController,],
   providers: [AppService],
 })
