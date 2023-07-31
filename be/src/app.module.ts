@@ -10,7 +10,7 @@ import { AuthModule } from './auth/auth.module';
   imports: [PdfTranslateModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'pdfs'),
-      serveRoot: '/pdfs', 
+      serveRoot: '/pdfs',
     }),
     AuthModule,],
   controllers: [AppController,],

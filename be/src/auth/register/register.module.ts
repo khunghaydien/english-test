@@ -6,4 +6,4 @@ import { RegisterService } from './register.service';
   controllers: [RegisterController],
   providers: [RegisterService]
 })
-export class RegisterModule {}
+export class RegisterModule { }
