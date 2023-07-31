@@ -2,9 +2,7 @@ import ReadingPage from "../reading/ReadingPage"
 
 const Body = () => {
     return (
-        <div className="test-body">
-            <ReadingPage />
-        </div>
+        <ReadingPage />
     )
 }
 export default Body

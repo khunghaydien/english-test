@@ -16,9 +16,7 @@ const volume: Volume = {
 }
 const Header = () => {
     return (
-        <div className="test-header">
-            <VolumeInfo volume={volume} id={'1'} />
-        </div>
+        <VolumeInfo volume={volume} id={'1'} />
     )
 }
 export default Header

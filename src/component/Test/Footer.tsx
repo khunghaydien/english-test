@@ -1,14 +1,13 @@
+import CountdownTimer from "../common/CountdownTimer"
 import Palette from "../common/Palette"
 
 const Footer = () => {
     return (
-        <div className="test-footer">
-            <div className="question-palette">
-                <Palette />
-            </div>
-            <div className="timer"></div>
+        <>
+            <Palette />
+            <CountdownTimer />
             <div className="test-action"></div>
-        </div>
+        </>
     )
 }
 export default Footer

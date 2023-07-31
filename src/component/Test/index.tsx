@@ -6,9 +6,15 @@ import './index.scss'
 const Test = () => {
     return (
         <div className="test">
-            <Header />
-            <Body />
-            <Footer />
+            <div className="test-header">
+                <Header />
+            </div>
+            <div className="test-body">
+                <Body />
+            </div>
+            <div className="test-footer">
+                <Footer />
+            </div>
         </div>
     )
 }
