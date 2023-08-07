@@ -1,0 +1,132 @@
+.login{
+    color: #294563;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1000px;
+    margin: 0 auto;
+    .logo{
+        width: 160px;    
+        margin: 50px 0;
+    }
+
+    .title{
+        font-size: 32px;
+        font-weight: bold;
+    }
+
+    .type-of-login{
+        margin-bottom: 40px;
+        text-align: center;
+        .login-by-phone{
+            position: relative;
+            margin-right: 40px;
+            &::after{
+                position: absolute;
+                content: '';
+                width: 1px;
+                height: 20px;
+                background: #ccc;
+                margin-left: 20px;
+            }
+        }
+        .login-by-email, 
+        .login-by-phone{
+            cursor: pointer;
+            font-size: 18px;
+            &.active{
+                color: #2dc100;
+            }
+        }
+    }
+
+    .basic-login{
+        max-width: 320px;
+        .login-field{
+            position: relative;
+            &.password, 
+            &.reset-password{
+                margin-top: 20px;
+            }
+            .icon{
+                position: absolute;
+                top: 8px;
+                right: 0;
+                cursor: pointer;
+            }
+        }
+    
+        .login-btn{
+            margin-top: 20px;
+        }
+    }
+    
+    .forget-password, 
+    .login-page,
+    .goto-help{
+        margin-top: 20px;
+    }
+
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 500px;
+        &-forget-password{
+            margin: 40px 0;
+        }
+    }
+
+    .or{
+        border-radius: 50%;
+        border: 1px solid #ccc;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        font-size: 16px;
+        font-weight: bold;
+        &::before{
+            position: absolute;
+            content: '';
+            width: 1px;
+            height: 100px;
+            background: #ccc;
+            bottom: 50px;
+        }
+        &::after{
+            position: absolute;
+            content: '';
+            width: 1px;
+            height: 100px;
+            background: #ccc;
+            top: 50px;
+        }
+    }
+    .social-login{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .btn{
+            font-weight: bold;
+        }
+    }
+    .register,
+    .privacy-policy,
+    .terms-of-use, 
+    .login-here, 
+    .forget-password,
+    .login-to-account{
+        color: #2dc100;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+    }
+}
+.error{
+    color: #df4930;
+    font-size: 12px;
+}

@@ -1,9 +1,9 @@
 .text-field {
-    min-height: 26px;
-    line-height: 26px;
+    min-height: 32px;
+    line-height: 32px;
     width: 100%;
     border: none;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid #cccccc;
     
     &--readonly {
       display: inline-block;
@@ -11,7 +11,7 @@
       width: 100%;
       padding-right: 16px;
       padding-left: 12px;
-      line-height: 28px;
+      line-height: 32px;
       text-overflow: ellipsis;
       white-space: nowrap;
     }

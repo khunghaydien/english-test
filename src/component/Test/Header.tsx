@@ -1,4 +1,4 @@
-import VolumeInfo, { Volume } from "../VolumeInfo"
+import VolumeInfo, { Volume } from "../volumeinfo"
 
 const volume: Volume = {
     basic: {

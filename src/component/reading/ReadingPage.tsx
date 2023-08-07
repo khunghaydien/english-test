@@ -5,7 +5,7 @@ export default function PdfViewer() {
     const [pdfContent, setPdfContent] = useState<string>('');
     const [pdfContentList, setPdfContentList] = useState<string[]>([]);
     useEffect(() => {
-        fetchPdfContent();
+        void fetchPdfContent();
         setPdfContentList(pdfContent.split('READING PASSAGE'))
     }, [])
     const convertToHTML = (text: string) => {
@@ -18,7 +18,9 @@ export default function PdfViewer() {
             if (!response.ok) {
                 throw new Error('Failed to fetch PDF content');
             }
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
             const data = await response.json();
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
             setPdfContent(data.data);
         } catch (error) {
             setPdfContent('Error fetching PDF content');
