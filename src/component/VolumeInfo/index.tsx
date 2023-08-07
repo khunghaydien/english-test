@@ -16,7 +16,7 @@ const VolumeInfo = ({ volume }: Props) => {
         <div className='volume-info'>
             <VolumeBasic volumeBasic={basic} id={'1'} />
             <VolumeDetail volumeDetail={detail} id={'2'} />
-            <div></div>
+            <div><span className="icon-facebook mr-3"></span></div>
         </div>
     )
 }

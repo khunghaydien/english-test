@@ -1,10 +1,10 @@
 import './App.css'
-import Reading from './component/reading'
+import Login from './component/login/Index'
 
 function App() {
   return (
     <>
-      <Reading/>
+      <Login/>
     </>
   )
 }
