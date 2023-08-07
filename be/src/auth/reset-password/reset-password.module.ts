@@ -6,4 +6,4 @@ import { ResetPasswordService } from './reset-password.service';
   controllers: [ResetPasswordController],
   providers: [ResetPasswordService]
 })
-export class ResetPasswordModule {}
+export class ResetPasswordModule { }

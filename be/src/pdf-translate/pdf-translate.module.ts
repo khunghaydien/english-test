@@ -6,4 +6,4 @@ import { PdfParserController } from './pdf-translate.controller';
   controllers: [PdfParserController],
   providers: [PdfParserService]
 })
-export class PdfTranslateModule {}
+export class PdfTranslateModule { }
