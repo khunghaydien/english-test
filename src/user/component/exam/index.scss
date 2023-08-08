@@ -1,0 +1,23 @@
+.header{
+    &-title{
+        font-size: 30px;
+        font-weight: bold;
+    }
+    &-select{
+        display: flex;
+        gap: 40px;
+        .option{
+            &-item{
+                display: flex;
+                align-items: end;
+                font-size: 16px;
+                font-weight: bold;
+                .icon{
+                    font-size: 30px;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}
+

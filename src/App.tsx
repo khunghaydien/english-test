@@ -1,11 +1,11 @@
-import Login from './component/login/Index'
+import Exam from "./user/component/exam";
 
 function App() {
   return (
     <>
-      <Login/>
+      <Exam />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

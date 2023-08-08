@@ -15,13 +15,13 @@
     border-radius: 100%;
     width: 20px;
     height: 20px;
-    border: 1px solid #327846;
+    border: 1px solid #2dc100;
     font-size: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
     &--active {
-      background: #327846;
+      background: #2dc100;
       color: #fff;
     }
   }

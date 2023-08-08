@@ -1,9 +1,9 @@
 import { useState } from "react";
-import FormGroup from "../common/field/FormGroup";
+import FormGroup from "../../user/common/field/FormGroup";
 import logo from "./../../assets/logo.svg";
 import "./Index.scss";
 import classNames from "classnames";
-import Button from "../common/button";
+import Button from "../../user/common/button";
 
 const Login = () => {
   const [value, setValue] = useState({
@@ -187,11 +187,11 @@ const Login = () => {
         </div>
       ) : page === "forgetPassword" ? (
         <div className="login-to-account" onClick={onChangeToLogin}>
-          Login to your account
+          Đăng nhập vào tài khoản của bạn
         </div>
       ) : (
         <div>
-          Chưa đăng ký?
+          Chưa đăng ký?{" "}
           <span className="register" onClick={onChangeToRegister}>
             Đăng ký tại đây.
           </span>
