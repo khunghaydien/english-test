@@ -4,34 +4,34 @@ import Option from "../../user/common/Option";
 
 const actionList = [
   {
-    id: "1",
+    value: "1",
     icon: "icon-share",
-    name: "Chia sẻ đề thi",
+    text: "Chia sẻ đề thi",
   },
   {
-    id: "2",
+    value: "2",
     icon: "icon-report",
-    name: "Báo cáo lỗi sai",
+    text: "Báo cáo lỗi sai",
   },
   {
-    id: "3",
+    value: "3",
     icon: "icon-download",
-    name: "Tải về",
+    text: "Tải về",
   },
   {
-    id: "4",
+    value: "4",
     icon: "icon-help",
-    name: "Hướng dẫn",
+    text: "Hướng dẫn",
   },
   {
-    id: "5",
+    value: "5",
     icon: "icon-save",
-    name: "Lưu tạm",
+    text: "Lưu tạm",
   },
   {
-    id: "6",
+    value: "6",
     icon: "icon-exit_to_app",
-    name: "Thoát",
+    text: "Thoát",
   },
 ];
 const Action = () => {
@@ -41,6 +41,9 @@ const Action = () => {
   };
   const onmouseleave = () => {
     setIsShowList(false);
+  };
+  const onChange = (value: string[]) => {
+    console.log(value);
   };
   return (
     <div
@@ -55,11 +58,8 @@ const Action = () => {
         )}
       ></div>
       {isShowList && (
-        <div className="option-list">
-          <Option
-            listOption={actionList}
-            onClick={(id: string) => console.log(id)}
-          />
+        <div className="action-list">
+          <Option options={actionList} onChange={onChange} />
         </div>
       )}
     </div>

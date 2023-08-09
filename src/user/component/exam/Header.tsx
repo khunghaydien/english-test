@@ -1,34 +1,111 @@
-import Option from "../../common/Option";
+import { useEffect, useState } from "react";
+// import Option from "../../common/Option";
+import SelectField from "../../common/field/SelectField";
 
 type Props = {
   title: string;
   type: string;
 };
-const optionList = [
+const examTypes = [
   {
-    id: "1",
+    value: "all",
     icon: "icon-library_books",
-    name: "Toàn bộ đề thi",
+    text: "Toàn bộ đề thi",
   },
   {
-    id: "2",
+    value: "academic",
     icon: "icon-person",
-    name: "Đề thi học thuật",
+    text: "Đề thi học thuật",
   },
   {
-    id: "3",
+    value: "general",
     icon: "icon-people",
-    name: "Đề thi chung",
+    text: "Đề thi chung",
+  },
+];
+const examSorts = [
+  {
+    value: "newest",
+    text: "Mới nhất",
+  },
+  {
+    value: "popular",
+    text: "Phổ biến",
+  },
+  {
+    value: "highRanking",
+    text: "Thứ hạng cao",
+  },
+  {
+    value: "newest",
+    text: "Mới nhất",
+  },
+  {
+    value: "popular",
+    text: "Phổ biến",
+  },
+  {
+    value: "highRanking",
+    text: "Thứ hạng cao",
+  },
+  {
+    value: "newest",
+    text: "Mới nhất",
+  },
+  {
+    value: "popular",
+    text: "Phổ biến",
+  },
+  {
+    value: "highRanking",
+    text: "Thứ hạng cao",
+  },
+  {
+    value: "newest",
+    text: "Mới nhất",
+  },
+  {
+    value: "popular",
+    text: "Phổ biến",
+  },
+  {
+    value: "highRanking",
+    text: "Thứ hạng cao",
   },
 ];
 const Header = ({ title }: Props) => {
+  const [selected, setSelected] = useState({
+    type: [examTypes[0].value],
+    sortBy: [examSorts[0].value],
+  });
+
+  useEffect(() => {
+    console.log(selected);
+  }, [selected]);
+
+  // const onChangeType = (type: string[]) => {
+  //   setSelected({ ...selected, type });
+  // };
+
+  const onChangeSort = (sortBy: string[]) => {
+    setSelected({ ...selected, sortBy });
+  };
+
   return (
     <div className="header">
       <div className="header-title">{title}</div>
       <div className="header-select">
-        <Option
-          listOption={optionList}
-          onClick={(id: string) => console.log(id)}
+        {/* <Option
+          options={examTypes}
+          onChange={onChangeType}
+          selected={selected.type}
+          className="type"
+        /> */}
+        <SelectField
+          className="sort-by"
+          options={examSorts}
+          onChange={onChangeSort}
+          selected={selected.sortBy}
         />
       </div>
     </div>

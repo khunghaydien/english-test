@@ -1,0 +1,36 @@
+.select {
+    position: relative;
+    &-selected {
+        border: 1px solid #ccc;
+        display: flex;
+        align-items: center;
+        padding: 0 5px;
+        border-radius: 5px;
+        height: 30px;
+
+        &--icon{
+            position: absolute;
+            right: 5px;
+            top: 8px;
+        }
+    }
+    &-option{
+        position: absolute;
+        top: 34px;
+        border-radius: 5px;
+        z-index: 100;
+        background: #fff;
+        border: 1px solid #ccc;
+        .option-container{
+            max-height: 195px;
+            overflow-y: auto;
+            &::-webkit-scrollbar{
+                width: 5px;
+            }
+            &::-webkit-scrollbar-thumb{
+                border-radius: 5px;
+                background: #ccc;
+            }
+        }
+    }
+}
