@@ -1,16 +1,17 @@
-import './Vote.scss'
-type Vote = {
-    voteStar: number,
-    voteNumber: number
-}
-const Vote = ({ voteStar, voteNumber }: Vote) => {
-    return (
-        <div className="vote">
-            {Array.from({ length: voteStar }, (_, index) => (
-                <div key={index} className="star"></div>
-            ))}
-            <div>{`(${voteNumber} votes)`}</div>
-        </div>
-    )
-}
-export default Vote
+import classNames from "classnames";
+import { Vote as VoteProps } from "../model/Volume";
+import "./Vote.scss";
+type Props = {
+  className?: string;
+} & VoteProps;
+const Vote = ({ star, quantity, className }: Props) => {
+  return (
+    <div className={classNames("vote", className)}>
+      {Array.from({ length: star }, (_, index) => (
+        <div key={index} className="star"></div>
+      ))}
+      <div className="quantity">{`(${quantity} votes)`}</div>
+    </div>
+  );
+};
+export default Vote;

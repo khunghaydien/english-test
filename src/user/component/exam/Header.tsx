@@ -1,109 +1,51 @@
 import { useEffect, useState } from "react";
-// import Option from "../../common/Option";
 import SelectField from "../../common/field/SelectField";
+import classNames from "classnames";
+import { ielts, ieltsSortBy } from "../../const/exam";
 
 type Props = {
   title: string;
   type: string;
 };
-const examTypes = [
-  {
-    value: "all",
-    icon: "icon-library_books",
-    text: "Toàn bộ đề thi",
-  },
-  {
-    value: "academic",
-    icon: "icon-person",
-    text: "Đề thi học thuật",
-  },
-  {
-    value: "general",
-    icon: "icon-people",
-    text: "Đề thi chung",
-  },
-];
-const examSorts = [
-  {
-    value: "newest",
-    text: "Mới nhất",
-  },
-  {
-    value: "popular",
-    text: "Phổ biến",
-  },
-  {
-    value: "highRanking",
-    text: "Thứ hạng cao",
-  },
-  {
-    value: "newest",
-    text: "Mới nhất",
-  },
-  {
-    value: "popular",
-    text: "Phổ biến",
-  },
-  {
-    value: "highRanking",
-    text: "Thứ hạng cao",
-  },
-  {
-    value: "newest",
-    text: "Mới nhất",
-  },
-  {
-    value: "popular",
-    text: "Phổ biến",
-  },
-  {
-    value: "highRanking",
-    text: "Thứ hạng cao",
-  },
-  {
-    value: "newest",
-    text: "Mới nhất",
-  },
-  {
-    value: "popular",
-    text: "Phổ biến",
-  },
-  {
-    value: "highRanking",
-    text: "Thứ hạng cao",
-  },
-];
-const Header = ({ title }: Props) => {
+
+const HeaderExam = ({ title }: Props) => {
   const [selected, setSelected] = useState({
-    type: [examTypes[0].value],
-    sortBy: [examSorts[0].value],
+    type: ielts[0].value,
+    sortBy: [ieltsSortBy[0].value],
   });
 
   useEffect(() => {
     console.log(selected);
   }, [selected]);
 
-  // const onChangeType = (type: string[]) => {
-  //   setSelected({ ...selected, type });
-  // };
+  const onChangeType = (type: string) => {
+    setSelected({ ...selected, type });
+  };
 
   const onChangeSort = (sortBy: string[]) => {
     setSelected({ ...selected, sortBy });
   };
+  const ROOT = "exam-header";
 
   return (
-    <div className="header">
-      <div className="header-title">{title}</div>
-      <div className="header-select">
-        {/* <Option
-          options={examTypes}
-          onChange={onChangeType}
-          selected={selected.type}
-          className="type"
-        /> */}
+    <div className={ROOT}>
+      <div className={`${ROOT}-title`}>{title}</div>
+      <div className={`${ROOT}-sort`}>
+        {ielts.map(({ value, text, icon }) => (
+          <div
+            className={classNames(`${ROOT}-sort--type`, {
+              ["active"]: value === selected.type,
+            })}
+            key={value}
+            onClick={() => onChangeType(value)}
+          >
+            <div className={classNames("icon", icon)}></div>
+            <div className="text">{text}</div>
+          </div>
+        ))}
         <SelectField
-          className="sort-by"
-          options={examSorts}
+          className={`${ROOT}-sort--by`}
+          options={ieltsSortBy}
           onChange={onChangeSort}
           selected={selected.sortBy}
         />
@@ -112,4 +54,4 @@ const Header = ({ title }: Props) => {
   );
 };
 
-export default Header;
+export default HeaderExam;

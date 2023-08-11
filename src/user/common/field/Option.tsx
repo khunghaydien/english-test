@@ -1,6 +1,5 @@
 import classNames from "classnames";
-import Button from "./button";
-import "./Option.scss";
+import Button from "./../button";
 
 export type Option = {
   value: string;

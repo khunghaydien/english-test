@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import "./SelectField.scss";
 import classNames from "classnames";
-import Option, { PropsOptions } from "../Option";
+import Option, { PropsOptions } from "./Option";
 
 const SelectField = ({
   options,

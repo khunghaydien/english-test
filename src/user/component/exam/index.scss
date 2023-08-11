@@ -1,26 +1,72 @@
-.header{
-    &-title{
-        font-size: 30px;
-        font-weight: bold;
-    }
-    &-select{
-        display: flex;
-        gap: 40px;
-        .type{
-            .option-list{
-                flex-direction: row;
-            }
-            .option-item{
-                &--icon{
+.exam{
+    &-header{
+        margin-bottom: 30px;
+        &-title{
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        &-sort{
+            display: flex;
+            gap: 40px;
+            &--type{
+                display: flex;
+                align-items: end;
+                cursor: pointer;
+                
+                &.active{
+                    color: #2dc100;
+                }
+                .text{
+                    font-size: 18px;
+                    font-weight: bold;
+                }
+                .icon{
                     font-size: 30px;
                     margin-right: 10px;
                 }
-                &--value{
-                    align-items: end;
-                    font-weight: bold;
+            }
+        }
+    }
+}
+.colection{
+    &-item{
+        margin-bottom: 30px;
+        &--name{
+            color: #284664;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        &--vote{
+            margin-bottom: 10px;
+            align-items: end;
+            .quantity{
+                margin-left: 20px;
+            }
+        }
+        .volume{
+            display: flex;
+            align-items: center;
+            width: 100%;
+            flex-wrap: wrap;
+
+            &-item{
+                width: 300px;
+                cursor: pointer;
+                &--name{
+                    display: flex;
+                    align-items: center;
+                    flex-wrap: nowrap;
+                }
+                &--viewed{
+                    background: #2dc100;
+                    color: #fff;
+                    font-size: 12px;
+                    border-radius: 100%;
+                    margin-left: 5px;
                 }
             }
-
         }
     }
 }
