@@ -4,6 +4,8 @@ export type Volume ={
     isViewed?: boolean,
 }
 export type Colection ={
+    imageUrl: string, 
+    imageAlt: string, 
     colectionId: string, 
     colectionName: string, 
     vote: Vote,
