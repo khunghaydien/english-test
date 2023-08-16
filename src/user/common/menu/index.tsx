@@ -1,6 +1,6 @@
 import classNames from "classnames";
-import Dropdown from "../../common/field/Dropdown";
-import { menu } from "../../user/const/Menu";
+import Dropdown from "../../../common/field/Dropdown";
+import { menu } from "../../const/Menu";
 import "./index.scss";
 export type Menu = {
   menu: string;

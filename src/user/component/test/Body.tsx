@@ -1,6 +1,4 @@
-import ReadingPage from "../reading/ReadingPage";
-
 const Body = () => {
-  return <ReadingPage />;
+  return <></>;
 };
 export default Body;

@@ -1,6 +1,6 @@
-import { Colection as ColectionProps } from "../../../model/Volume";
-import Vote from "../../../common/Vote";
-import Volume from "../../volume";
+import { Colection as ColectionProps } from "../../model/Volume";
+import Vote from "../../common/Vote";
+import Volume from "./volume";
 type Props = {
   colections: ColectionProps[];
   onClickVolume: (volumeId: string) => void;
@@ -11,7 +11,7 @@ const Body = ({ colections, onClickVolume }: Props) => {
     <div className={`${ROOT}`}>
       {colections.map(
         ({ colectionId, colectionName, vote, volumes, imageUrl, imageAlt }) => (
-          <div className={`${ROOT}--container`}>
+          <div className={`${ROOT}--container`} key={colectionId}>
             <div className={`${ROOT}--image`}>
               <img src={imageUrl} alt={imageAlt} />
             </div>

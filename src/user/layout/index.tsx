@@ -1,13 +1,12 @@
 import { useNavigate } from "react-router";
-import Menu, { Menu as MenuProps } from "./menu";
-import Advertisement from "./advertisement";
+import Menu, { Menu as MenuProps } from "../common/menu";
+import Advertisement from "../common/advertisement";
 import { styled } from "styled-components";
 type Props = {
   page: React.ReactNode;
   className?: string;
-  isTest?: boolean;
 };
-const User = ({ page, className = "user-page", isTest = false }: Props) => {
+const Default = ({ page, className = "default-page" }: Props) => {
   const navigate = useNavigate();
   const onChange = (selected: MenuProps) => {
     navigate(
@@ -16,7 +15,6 @@ const User = ({ page, className = "user-page", isTest = false }: Props) => {
         : `${selected.menu}`
     );
   };
-  if (isTest) return <div className={className}>{page}</div>;
   return (
     <div className={className}>
       <Menu onChange={onChange} />
@@ -30,19 +28,17 @@ const User = ({ page, className = "user-page", isTest = false }: Props) => {
     </div>
   );
 };
-export default User;
+export default Default;
 const MainSection = styled.div`
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  height: calc(100vh - 200px);
   .page {
     width: 800px;
   }
   .left-page {
     width: 400px;
     background: #f5f5f5;
-    height: calc(100vh - 200px);
   }
 `;
 const Footer = styled.div`

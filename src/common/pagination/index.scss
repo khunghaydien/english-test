@@ -1,5 +1,23 @@
-.pagination{
+.pagination {
+  display: flex;
+  justify-content: end;
+  margin: 0 20px;
+  &-container {
     display: flex;
     align-items: center;
     gap: 5px;
+  }
+  .btn,
+  .select-selected {
+    height: 32px;
+    min-width: 32px;
+    border-radius: 10px;
+    font-weight: bold;
+  }
+  .btn-page {
+    &.active {
+      background: #2dc100;
+      color: #fff;
+    }
+  }
 }

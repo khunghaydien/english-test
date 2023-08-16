@@ -1,38 +1,36 @@
-.dropdown{
-    &-text{
-        cursor: pointer;
-        .icon{
-            margin-left: 10px;
-        }
+.dropdown {
+  &-text {
+    cursor: pointer;
+    .icon {
+      margin-left: 10px;
     }
-    .option{
-        position: absolute;
-        top: 50px;
-        border-radius: 5px;
-        z-index: 100;
-        border: 1px solid #ccc;
-        background: #294563;
-    
-        &-item{
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 5px;
-            gap: 10px;
-            border-radius: 5px;
-            height: 40px;
-            margin: 2px 2px 0 2px;
-    
-            &:last-child{
-                margin-bottom: 2px;
-            }
-    
-            &:hover {
-                background: #23527c;
-            }
-        }
-    } 
+  }
+  .option {
+    position: absolute;
+    top: 50px;
+    border-radius: 5px;
+    z-index: 100;
+    border: 1px solid #ccc;
+    background: #294563;
+
+    &-item {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5px;
+      gap: 10px;
+      border-radius: 5px;
+      height: 40px;
+      margin: 2px 2px 0 2px;
+
+      &:last-child {
+        margin-bottom: 2px;
+      }
+
+      &:hover {
+        background: #23527c;
+      }
+    }
+  }
 }
-
-

@@ -1,9 +1,11 @@
+import classNames from "classnames";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 type Props = {
   started: number;
+  className?: string;
 };
-const CountdownTimer = ({ started }: Props) => {
+const CountdownTimer = ({ started, className }: Props) => {
   const [time, setTime] = useState(started);
   useEffect(() => {
     const timer = setInterval(() => {
@@ -20,7 +22,11 @@ const CountdownTimer = ({ started }: Props) => {
     return `${formattedMinutes}:${formattedSeconds}`;
   };
 
-  return <Timer>{formatTime(time)}</Timer>;
+  return (
+    <div className={classNames(className, "timer")}>
+      <Timer>{formatTime(time)}</Timer>
+    </div>
+  );
 };
 export default CountdownTimer;
 const Timer = styled.div`

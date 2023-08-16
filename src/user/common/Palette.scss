@@ -2,8 +2,12 @@
   &-title {
     font-size: 18px;
     font-weight: 600;
-    text-align: left;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    div {
+      margin-left: 20px;
+    }
   }
   &-list {
     display: flex;
@@ -15,13 +19,13 @@
     border-radius: 100%;
     width: 20px;
     height: 20px;
-    border: 1px solid #2dc100;
+    border: 1px solid #327846;
     font-size: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
     &--active {
-      background: #2dc100;
+      background: #327846;
       color: #fff;
     }
   }

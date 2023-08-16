@@ -1,28 +1,28 @@
-.btn{
-    border-radius: 5px;
-    outline: none;
-    border: 1px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    color: #536b83;
-    
-    &.primary{
-        background: #2dc100;
-        color: white;
-    }
-    &.error{
-        background: #df4930;
-        color: white;
-    }
-    &.secondary{
-        background: #507cc0;
-        color: white;
-    }
-    &.thirth{
-        background: #64ccf1;
-        color: white;
-    }
+.btn {
+  border-radius: 5px;
+  outline: none;
+  border: 1px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #536b83;
+
+  &.primary {
+    background: #2dc100;
+    color: white;
+  }
+  &.error {
+    background: #df4930;
+    color: white;
+  }
+  &.secondary {
+    background: #507cc0;
+    color: white;
+  }
+  &.thirth {
+    background: #64ccf1;
+    color: white;
+  }
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import SelectField from "../../../../common/field/SelectField";
+import SelectField from "../../../common/field/SelectField";
 import classNames from "classnames";
-import { ielts, ieltsSortBy } from "../../../const/Exam";
+import { ielts, ieltsSortBy } from "../../const/Exam";
 
 type Props = {
   type: string;

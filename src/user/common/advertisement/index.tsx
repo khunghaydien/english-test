@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import List from "./List";
 import { Props as ItemProps } from "./Item";
-import image from "./../../assets/ielts-volume.jpg";
+import image from "./../../../assets/ielts-volume.jpg";
 import "./index.scss";
 const advertisements: ItemProps[] = [
   {

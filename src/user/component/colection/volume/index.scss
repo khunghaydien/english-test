@@ -1,0 +1,23 @@
+.volume {
+  display: flex;
+  align-items: start;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 20px;
+  &-item {
+    width: 310px;
+    cursor: pointer;
+    &--name {
+      display: flex;
+      align-items: start;
+      flex-wrap: nowrap;
+    }
+    &--viewed {
+      background: #2dc100;
+      color: #fff;
+      font-size: 12px;
+      border-radius: 100%;
+      margin-left: 5px;
+    }
+  }
+}
