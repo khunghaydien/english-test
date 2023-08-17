@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { Vote as VoteProps } from "../model/Volume";
+import { Vote as VoteProps } from "../../model/Volume";
 import "./Vote.scss";
 type Props = {
   className?: string;

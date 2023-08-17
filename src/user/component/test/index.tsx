@@ -1,7 +1,7 @@
 import Footer from "./Footer";
 import Header from "./Header";
 import "./index.scss";
-import imgae from "./../../../assets/ielts-volume.jpg";
+import imgae from "@/assets/ielts-volume.jpg";
 type Props = {
   page: React.ReactNode;
 };

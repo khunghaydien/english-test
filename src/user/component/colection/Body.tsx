@@ -1,4 +1,4 @@
-import { Colection as ColectionProps } from "../../model/Volume";
+import { Colection as ColectionProps } from "@/model/Volume";
 import Vote from "../../common/Vote";
 import Volume from "./volume";
 type Props = {

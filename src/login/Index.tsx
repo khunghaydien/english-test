@@ -1,9 +1,9 @@
 import { useState } from "react";
-import FormGroup from "../common/field/FormGroup";
-import logo from "./../assets/logo.svg";
+import FormGroup from "@/common/field/FormGroup";
+import logo from "@/assets/logo.svg";
 import "./Index.scss";
 import classNames from "classnames";
-import Button from "../common/button";
+import Button from "@/common/button";
 
 const Login = () => {
   const [value, setValue] = useState({

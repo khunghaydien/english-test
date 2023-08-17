@@ -1,10 +1,10 @@
 import Body from "./Body";
 import Footer from "./Footer";
 import Header from "./Header";
-import { Colection as ColectionProps } from "../../model/Volume";
+import { Colection as ColectionProps } from "@/model/Volume";
 import "./index.scss";
 import { useLocation, useNavigate } from "react-router-dom";
-import image from "./../../../assets/ielts-volume.jpg";
+import image from "@/assets/ielts-volume.jpg";
 import { useEffect, useState } from "react";
 const colections: ColectionProps[] = [
   {
