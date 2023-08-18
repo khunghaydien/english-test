@@ -1,0 +1,50 @@
+.global {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .loading {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    &-item {
+      display: inline-block;
+      position: absolute;
+      left: 8px;
+      width: 10px;
+      border-radius: 100%;
+      background: #2dc100;
+      animation: loading 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+      &-1 {
+        left: 8px;
+        animation-delay: -0.24s;
+      }
+      &-2 {
+        left: 32px;
+        animation-delay: -0.12s;
+      }
+      &-3 {
+        left: 56px;
+        animation-delay: 0;
+      }
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
+  }
+}
