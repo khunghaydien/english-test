@@ -7,7 +7,7 @@ import DefaultLayout from "./user/layout/index.tsx";
 import Admin from "./admin/index.tsx";
 import TestColection from "./user/component/colection/index.tsx";
 import Test from "./user/component/test/index.tsx";
-import IeltsReadingTest from "./container/user/IeltsReadingTest.tsx";
+import IeltsReaing from "./container/user/test/IeltsReaing.tsx";
 const router = createBrowserRouter([
   {
     path: "",
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/test/:testId",
-    element: <Test page={<IeltsReadingTest />} />,
+    element: <Test page={<IeltsReaing />} />,
     errorElement: <ErrorPage></ErrorPage>,
   },
 ]);
