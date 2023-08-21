@@ -5,11 +5,15 @@ p {
 .reading {
   width: 100%;
   display: flex;
-  gap: 30px;
+  height: calc(100vh - 154px);
   &-passage {
     background: #d7e6dc;
     width: 50%;
-    height: calc(100vh - 204px);
+    overflow: auto;
+    padding: 20px;
+  }
+  &-question {
+    width: 50%;
     overflow: auto;
     padding: 20px;
   }

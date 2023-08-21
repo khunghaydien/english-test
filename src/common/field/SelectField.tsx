@@ -57,7 +57,7 @@ const SelectField = ({
         className="select-selected"
         onClick={() => setIsOption(!isOption)}
       >
-        <span style={selectSelectedStyle}>{selectedText || "Chọn..."}</span>
+        <span style={selectSelectedStyle}>{selectedText || ""}</span>
         <span
           className={classNames(
             "select-selected--icon",
