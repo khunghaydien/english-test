@@ -1,11 +1,21 @@
-import { styled } from "styled-components";
-type Table = {
-  th: [];
+import "./table.scss";
+export type Instruction = {
+  value: string;
+  instruction: any;
 };
-const Table = ({}) => {
-  return <T></T>;
+type Props = {
+  rows: Instruction[];
 };
-const T = styled.div`
-  border: 1px solid;
-`;
+const Table = ({ rows }: Props) => {
+  return (
+    <div className="table">
+      {rows.map(({ value, instruction }, idx) => (
+        <div key={idx} className="table-row">
+          <div className="table-colume">{value}</div>
+          <div className="table-colume">{instruction}</div>
+        </div>
+      ))}
+    </div>
+  );
+};
 export default Table;

@@ -13,7 +13,7 @@ const SelectField = ({
 }: PropsOptions) => {
   const [isOption, setIsOption] = useState(false);
   const selectFieldRef = useRef<HTMLDivElement | null>(null);
-
+  const [currentSelected, setCurrentSelected] = useState(selected);
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -30,12 +30,13 @@ const SelectField = ({
   }, []);
 
   const change = (selected: string[]) => {
+    setCurrentSelected(selected);
     if (onChange) onChange(selected);
     if (!multiple) setIsOption(false);
   };
 
   const selectedText = options
-    .filter((obj) => selected.includes(obj.value))
+    .filter((obj) => currentSelected.includes(obj.value))
     .map((obj) => obj.text)
     .join(", ");
 
@@ -74,7 +75,7 @@ const SelectField = ({
           onChange={change}
           close={() => setIsOption(false)}
           multiple={multiple}
-          selected={selected}
+          selected={currentSelected}
         />
       )}
     </div>

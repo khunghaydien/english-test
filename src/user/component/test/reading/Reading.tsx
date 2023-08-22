@@ -1,17 +1,20 @@
 import Global from "@/container/common/global";
 import "./index.scss";
 import classNames from "classnames";
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import QuestionSet from "@/user/common/question/QuestionSet";
+import { Answer } from "@/user/common/question/QuestionDetail";
+
 type Props = {
   reading: any;
+  answered: Answer;
   fetchReading: () => void;
 };
-
-export default function Reading({ reading, fetchReading }: Props) {
+export default function Reading({ reading, fetchReading, answered }: Props) {
   useEffect(() => {
     fetchReading();
   }, []);
+  const [currentAnsered, setCurrentAnswered] = useState(answered);
   const setQuestions = [
     {
       caption: "SECTION 1: QUESTIONS 1-14",
@@ -28,8 +31,8 @@ export default function Reading({ reading, fetchReading }: Props) {
               value: "No",
             },
             {
-              text: "NotGiven",
-              value: "Not Given",
+              text: "Not Given",
+              value: "NotGiven",
             },
           ],
           questionDetail: [
@@ -63,6 +66,45 @@ export default function Reading({ reading, fetchReading }: Props) {
         },
         {
           type: "SELECT",
+          instructions: [
+            {
+              value: "",
+              instruction: "List of times & places",
+            },
+            {
+              value: "A",
+              instruction: "In the UK today",
+            },
+
+            {
+              value: "B",
+              instruction: "In 19th-century Norway",
+            },
+            {
+              value: "C",
+              instruction: "In 19th-century Sweden",
+            },
+            {
+              value: "D",
+              instruction: "In 19th-century England",
+            },
+            {
+              value: "E",
+              instruction: "In Denmark today",
+            },
+            {
+              value: "F",
+              instruction: "In 9th-century Persia",
+            },
+            {
+              value: "G",
+              instruction: "In mid-20th century Soviet Union",
+            },
+            {
+              value: "H",
+              instruction: "In Russia today",
+            },
+          ],
           options: [
             {
               text: "A",
@@ -141,28 +183,27 @@ export default function Reading({ reading, fetchReading }: Props) {
           },
         },
         {
-          number: [14],
           type: "RADIO_BOX",
           options: [
             {
-              text: "A",
-              value: "A brief history of Vikings",
+              value: "A",
+              text: "A brief history of Vikings",
             },
             {
-              text: "B",
-              value: "Recent Viking discoveries",
+              value: "B",
+              text: "Recent Viking discoveries",
             },
             {
-              text: "C",
-              value: "A modem fascination with Vikings",
+              value: "C",
+              text: "A modem fascination with Vikings",
             },
             {
-              text: "D",
-              value: "Interpretations of Viking history",
+              value: "D",
+              text: "Interpretations of Viking history",
             },
             {
-              text: "E",
-              value: "Viking history and nationalism",
+              value: "E",
+              text: "Viking history and nationalism",
             },
           ],
           questionDetail: [
@@ -177,27 +218,83 @@ export default function Reading({ reading, fetchReading }: Props) {
             hint: "Write the correct letter in box 14 on your answer sheet.",
           },
         },
+        {
+          type: "INPUT",
+          questionDetail: {
+            text: "The Earth could become uninhabitable, like other planets, through a major change in the ___ . Volcanic eruptions of ___  can lead to shortages of ___ in a wide area. An asteroid hitting the Earth could create a ___  that would result in a new ___ . Plans are being made to use ___ to deflect asteroids heading for the Earth.",
+            number: [21, 22, 23, 24, 25, 26],
+          },
+          questionTitle: {
+            caption: "Questions 21-26",
+            question:
+              "complete the summary below. Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+            hint: "Write your answers in boxes 21-26 on your answer sheet.",
+          },
+        },
       ],
     },
   ];
-  const onChangeValue = (selected: string) => {
-    console.log(selected);
+  const onChangeValue = (answered: Answer) => {
+    console.log(answered);
+    setCurrentAnswered(answered);
+  };
+  const leftPaneRef = useRef<HTMLDivElement>(null);
+  const rightPaneRef = useRef<HTMLDivElement>(null);
+  const gutterHorizontal = useRef<HTMLDivElement>(null);
+  const [leftPaneWidth, setLeftPaneWidth] = useState<number>(50);
+  const [clientX, setClientX] = useState<number>(0);
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.preventDefault();
+    setClientX(e.clientX);
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
+  };
+  const handleMouseMove = (e: MouseEvent) => {
+    const deltaX = e.clientX - clientX;
+    const totalWidth = gutterHorizontal.current!.parentElement!.offsetWidth;
+    const leftWidth = leftPaneWidth + (deltaX / totalWidth) * 100;
+    if (leftWidth >= 20 && leftWidth <= 80) {
+      setLeftPaneWidth(leftWidth);
+    }
+  };
+  const handleMouseUp = () => {
+    document.removeEventListener("mousemove", handleMouseMove);
+    document.removeEventListener("mouseup", handleMouseUp);
   };
   return (
     <div className={classNames("reading")}>
       <Global />
-      <div className="reading-passage">
-        <div className="reading-content">{reading}</div>
+      <div
+        className="gutter-horizontal"
+        ref={gutterHorizontal}
+        onMouseDown={handleMouseDown}
+        style={{ left: `calc(${leftPaneWidth}% - 10px)` }}
+      ></div>
+      <div
+        className="left-pane"
+        ref={leftPaneRef}
+        style={{ width: `${leftPaneWidth}%` }}
+      >
+        <div className="reading-passage">
+          <div className="reading-content">{reading}</div>
+        </div>
       </div>
-      <div className="reading-question">
-        {setQuestions.map(({ caption, questions }, idx) => (
-          <QuestionSet
-            key={idx}
-            caption={caption}
-            onChange={onChangeValue}
-            questionSet={questions}
-          />
-        ))}
+      <div
+        className="right-pane"
+        ref={rightPaneRef}
+        style={{ width: `${100 - leftPaneWidth}%` }}
+      >
+        <div className="reading-question">
+          {setQuestions.map(({ caption, questions }, idx) => (
+            <QuestionSet
+              key={idx}
+              caption={caption}
+              onChange={onChangeValue}
+              questionSet={questions}
+              answered={currentAnsered}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

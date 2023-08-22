@@ -25,14 +25,7 @@
       font-weight: bold;
     }
     &-detail {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
       &-item {
-        display: flex;
-        align-items: start;
-        width: 100%;
-        gap: 20px;
         &--number {
           width: 30px;
           height: 30px;
@@ -49,6 +42,27 @@
         }
         &--text {
           width: calc(100% - 200px);
+        }
+      }
+      &-multiple--select {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        &-item {
+          display: flex;
+          align-items: start;
+          width: 100%;
+          gap: 20px;
+        }
+      }
+      &-single--radiobox {
+        &-item {
+          &--question {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 10px;
+          }
         }
       }
     }
