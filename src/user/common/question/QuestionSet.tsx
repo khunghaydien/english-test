@@ -1,65 +1,68 @@
 import classNames from "classnames";
-import QuestionTitle, { Props as QuestionsProps } from "./QuestionTitle";
-import QuestionDetail, {
-  Answer,
-  QuestionDetail as QuestionDetailProps,
-} from "./QuestionDetail";
+import QuestionTitle from "./QuestionTitle";
+import QuestionDetail, { Answer, Question } from "./QuestionDetail";
 import Instruction from "./Instructions";
-import { Option } from "@/common/field/Option";
 import "./index.scss";
-import { Instruction as InstructionProps } from "@/common/table";
+import { Option } from "@/common/field/Option";
 
-type QuestionSet = {
-  instructions?: InstructionProps[];
-  options?: Option[];
+export type QuestionProps = {
   type: string;
-  questionDetail: QuestionDetailProps[] | any;
-  questionTitle: QuestionsProps;
+  titleCaption: string;
+  title: string;
+  titleHint?: string;
+  instruction?: any;
+  question: Question;
+  clozePassage?: string;
+  options?: Option[];
 };
 
 export type Props = {
   className?: string;
   caption: string;
   onChange: (answered: Answer) => void;
-  questionSet: QuestionSet[];
+  questions: QuestionProps[];
   answered: Answer;
 };
 
 const QuestionSet = ({
   className,
-  questionSet,
+  questions,
   caption,
   onChange,
   answered,
 }: Props) => {
-  const onChangeValue = (answered: Answer) => {
-    onChange(answered);
-  };
   return (
     <div className={classNames("question-set", className)}>
       <div className="question-set-caption">{caption}</div>
       <div className="question-set-list">
-        {questionSet.map(
+        {questions.map(
           (
-            { questionTitle, questionDetail, options, type, instructions },
+            {
+              type,
+              titleCaption,
+              titleHint,
+              instruction,
+              question,
+              clozePassage,
+              options,
+              title,
+            },
             idx
           ) => (
             <div key={idx} className="question-set-item">
               <QuestionTitle
-                caption={questionTitle.caption}
-                question={questionTitle.question}
-                hint={questionTitle.hint}
+                caption={titleCaption}
+                question={title}
+                hint={titleHint}
               />
-              <Instruction
-                type={type}
-                instructions={instructions || undefined}
-              />
+              <Instruction type={type} instructions={instruction} />
               <QuestionDetail
-                answered={answered}
                 type={type}
-                options={options ? options : []}
-                questionDetails={questionDetail}
-                onChange={onChangeValue}
+                question={question}
+                options={options}
+                answered={answered}
+                onChange={onChange}
+                clozePassage={clozePassage}
               />
             </div>
           )

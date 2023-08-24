@@ -27,24 +27,30 @@
     &-detail {
       &-item {
         &--number {
+          display: inline-block;
           width: 30px;
           height: 30px;
-          background: #327846;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 100%;
+          border-radius: 50%;
+          background-color: #327846;
+          font-size: 14px;
+          font-weight: 700;
+          text-align: center;
+          line-height: 30px;
           color: #fff;
-          font-weight: bold;
-        }
-        &--anser {
-          width: 150px;
         }
         &--text {
           width: calc(100% - 200px);
         }
+        &--input {
+          width: 130px;
+          height: 30px;
+          border: none;
+          border-bottom: 1px solid #ccc;
+          outline: none;
+          color: #536b83;
+        }
       }
-      &-multiple--select {
+      &-type--select {
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -53,16 +59,6 @@
           align-items: start;
           width: 100%;
           gap: 20px;
-        }
-      }
-      &-single--radiobox {
-        &-item {
-          &--question {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            margin-bottom: 10px;
-          }
         }
       }
     }

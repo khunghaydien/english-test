@@ -1,7 +1,7 @@
 export type Props = {
   caption: string;
   question: string;
-  hint: string;
+  hint?: string;
 };
 const QuestionTitle = ({ caption, question, hint }: Props) => {
   return (

@@ -4,7 +4,7 @@ type Props = {
   type: string;
   instructions?: InstructionProps[];
 };
-const yesNoNotGivenInstruction = [
+const yesNoNotGivenInstruction: InstructionProps[] = [
   {
     value: "Yes",
     instruction: "if the statement agrees with the views of the writer",

@@ -1,39 +1,32 @@
-import { uniqueId } from "lodash";
 import { useState } from "react";
 import "./Radiobox.scss";
 type Option = {
-  value: string;
-  text: string;
+  [key: string]: string;
 };
 type Props = {
-  onChange: (value: any) => void;
-  options: Option[];
+  onChange: (value: string) => void;
+  options?: Option;
   value: string;
 };
-const Radiobox = ({ onChange, options, value }: Props) => {
-  const id = `radiobox-input-id-${uniqueId()}`;
+const Radiobox = ({ onChange, options = {}, value }: Props) => {
   const [currentValue, setCurrentValue] = useState(value);
-  const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCurrentValue(e.target.value);
-    onChange(e.target.value);
+  const handleChange = (key: string) => {
+    setCurrentValue(key);
+    onChange(key);
   };
   return (
     <div className="radiobox-group">
-      {options.map(({ value, text }, idx) => (
-        <div key={idx} className="radiobox-group-item">
-          <div className="radiobox-group-value">{value}</div>
+      {Object.keys(options).map((key) => (
+        <div key={key} className="radiobox-group-item">
+          <div className="radiobox-group-value">{key}</div>
           <input
             className="radiobox-group-input"
             type="radio"
-            id={id}
-            value={value}
-            checked={value === currentValue}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              onChangeValue(e)
-            }
+            checked={key === currentValue}
+            onChange={() => handleChange(key)}
           />
-          <label className="radiobox-group-label" htmlFor={id}>
-            {text}
+          <label className="radiobox-group-label" htmlFor={key}>
+            {options[key]}
           </label>
         </div>
       ))}

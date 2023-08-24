@@ -7,10 +7,7 @@ type State ={
 }
 const initialState:State = {
     reading: null,
-    answered:{
-      1:'No',
-      3:"NotGiven"
-    }
+    answered:{}
 }
 const reading = createSlice({
   name: 'ieltsReading',
