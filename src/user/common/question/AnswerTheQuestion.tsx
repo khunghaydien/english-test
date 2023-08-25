@@ -2,16 +2,13 @@ import SelectField from "@/common/field/SelectField";
 import { Question, Answer } from "./Choice";
 import { Option } from "@/common/field/Option";
 
-export type Instruction = {
-  [key: string]: string;
-};
-
 type Props = {
   question: Question;
   answered: Answer;
   onChange: (answer: Answer) => void;
-  instruction?: Instruction;
+  instruction?: Option;
 };
+
 const AnswerTheQuestion = ({
   question,
   answered,
@@ -23,24 +20,17 @@ const AnswerTheQuestion = ({
     newAnswered[key] = answer;
     onChange(newAnswered);
   };
-  let option: Option[] = [];
-  if (instruction)
-    Object.keys(instruction).map((key) => {
-      option.push({ value: key, text: instruction[key] });
-    });
   return (
     <>
       {Object.keys(question).map((key) => (
         <div key={key} className="question-detail-type--select-item">
-          <div className="question-detail-item--number">{key}</div>
+          <div className="number">{key}</div>
           <div className="question-detail-item--answer">
             {instruction ? (
               <SelectField
-                selected={[answered[key]]}
-                options={option}
-                onChange={(selected: string[]) =>
-                  handleAnswer(selected[0], key)
-                }
+                selected={answered[key]}
+                options={instruction}
+                onChange={(selected: string) => handleAnswer(selected, key)}
                 width="120px"
               />
             ) : (

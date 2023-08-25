@@ -6,7 +6,7 @@ type Option = {
 };
 
 type QuestionInfo = {
-  question: string;
+  question?: string;
   option?: Option;
 };
 

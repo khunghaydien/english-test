@@ -25,31 +25,6 @@
       font-weight: bold;
     }
     &-detail {
-      &-item {
-        &--number {
-          display: inline-block;
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          background-color: #327846;
-          font-size: 14px;
-          font-weight: 700;
-          text-align: center;
-          line-height: 30px;
-          color: #fff;
-        }
-        &--text {
-          width: calc(100% - 200px);
-        }
-        &--input {
-          width: 130px;
-          height: 30px;
-          border: none;
-          border-bottom: 1px solid #ccc;
-          outline: none;
-          color: #536b83;
-        }
-      }
       &-type--select {
         display: flex;
         flex-direction: column;
@@ -63,4 +38,34 @@
       }
     }
   }
+}
+
+.question {
+}
+
+input[type="text"] {
+  width: 130px;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+  color: #536b83;
+  margin-left: 2px;
+}
+.number {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #327846;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 30px;
+  color: #fff;
+}
+.select {
+  margin-left: 2px;
+  width: max-content;
+  display: inline-block;
 }

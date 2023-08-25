@@ -15,17 +15,14 @@ export const ielts = [
       text: "Đề thi chung",
     },
 ];
-export const ieltsSortBy = [
-    {
-      value: "newest",
-      text: "Mới nhất",
-    },
-    {
-      value: "popular",
-      text: "Phổ biến",
-    },
-    {
-      value: "highRanking",
-      text: "Thứ hạng cao",
-    },
-];
+export const ieltsSortBy = {
+  newest:{
+    text:'Mới nhất'
+  },
+  popular:{
+    text:'Phổ biến'
+  },
+  highRanking:{
+    text:'Thứ hạng cao'
+  }
+}

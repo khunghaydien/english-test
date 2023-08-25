@@ -2,7 +2,7 @@ import { Option } from "@/common/field/Option";
 import Choice, { Question as QuestionProps } from "./Choice";
 import AnswerTheQuestion from "./AnswerTheQuestion";
 import FillClozePassage from "./FillClozePassage";
-import FillClozeTable from "./FillTheClozeTable";
+import FillClozeTable, { Cell } from "./FillTheClozeTable";
 
 export type Question = {
   [key: number]: string;
@@ -15,7 +15,7 @@ export type Props = {
   type: string;
   question: Question;
   clozePassage?: string;
-  options?: Option[];
+  options?: Option;
   answered: Answer;
   onChange: (answer: Answer) => void;
 };
@@ -76,15 +76,52 @@ const questionClozeTable = {
     question: "",
   },
 };
-const clozeTableTest: string[][] = [
-  ["test", "test ___ abc", "abc"],
-  ["test", "test ___ abc", "acsjk ___ sks"],
+const clozeTableTest: Cell[][] = [
+  [
+    { clozePassage: "Year" },
+    { clozePassage: "Climate" },
+    { clozePassage: "Finch’s condition" },
+  ],
+  [
+    { clozePassage: "1977" },
+    {
+      clozePassage: " ___ ",
+      question: {
+        23: {},
+      },
+    },
+    {
+      clozePassage:
+        "small-beak birds failing to survive, without the power to open ___ ",
+      question: {
+        24: {},
+      },
+    },
+  ],
+  [
+    { clozePassage: "1985" },
+    {
+      clozePassage: " ___ brought by El Nino",
+      question: {
+        25: {},
+      },
+    },
+    {
+      clozePassage:
+        "big-beak birds dying out, with ___ as the main food resource",
+      question: {
+        26: {},
+      },
+    },
+  ],
 ];
+
 const instructionSelect = {
-  yes: "Yes",
-  no: "No",
-  notGiven: "Not Given",
+  yes: { text: "Yes" },
+  no: { text: "No" },
+  notGiven: { text: "Not Given" },
 };
+
 const QuestionDetail = ({ type, answered, onChange, clozePassage }: Props) => {
   const isSelect = type === "YES_NO_NOTGIVEN" || type === "SELECT";
   const isRadiobox = type === "RADIO_BOX";
@@ -133,7 +170,6 @@ const QuestionDetail = ({ type, answered, onChange, clozePassage }: Props) => {
       )}
       <FillClozeTable
         clozeTable={clozeTableTest}
-        question={questionClozeTable}
         answered={answered}
         onChange={onChange}
       />

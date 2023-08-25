@@ -7,13 +7,14 @@ const SelectField = ({
   options,
   onChange,
   multiple,
-  selected = [],
+  selected = "",
   width = "200px",
   className,
 }: PropsOptions) => {
   const [isOption, setIsOption] = useState(false);
   const selectFieldRef = useRef<HTMLDivElement | null>(null);
   const [currentSelected, setCurrentSelected] = useState(selected);
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -29,16 +30,16 @@ const SelectField = ({
     };
   }, []);
 
-  const change = (selected: string[]) => {
+  const change = (selected: string) => {
     setCurrentSelected(selected);
     if (onChange) onChange(selected);
     if (!multiple) setIsOption(false);
   };
 
-  const selectedText = options
-    .filter((obj) => currentSelected.includes(obj.value))
-    .map((obj) => obj.text)
-    .join(", ");
+  const selectedText = Object.keys(options)
+    .filter((key) => currentSelected.split(",").includes(key))
+    .map((key) => options[key].text)
+    .join(",");
 
   const OptionStyle: React.CSSProperties = {
     width: width,
@@ -49,6 +50,8 @@ const SelectField = ({
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis",
+    lineHeight: "18px",
+    height: "14px",
   };
 
   return (

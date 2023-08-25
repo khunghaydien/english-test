@@ -8,20 +8,8 @@ type Props = {
   className?: string;
   quantity: number;
 };
-const paginations = [
-  {
-    value: "3",
-    text: "3",
-  },
-  {
-    value: "5",
-    text: "5",
-  },
-  {
-    value: "10",
-    text: "10",
-  },
-];
+const paginations = { 3: { text: "3" }, 5: { text: "5" }, 10: { text: "10" } };
+
 const Pagination = ({ quantity, className }: Props) => {
   const [itemPerPage, setItemPerPage] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
@@ -39,8 +27,8 @@ const Pagination = ({ quantity, className }: Props) => {
     listPage = [prePage, prePage + 1, prePage + 2];
     isDot = true;
   }
-  const onPaginationChange = (selected: string[]) => {
-    setItemPerPage(parseInt(selected[0]));
+  const onPaginationChange = (selected: string) => {
+    setItemPerPage(parseInt(selected));
   };
   const onClickFirstPage = () => {
     setCurrentPage(1);
@@ -108,7 +96,7 @@ const Pagination = ({ quantity, className }: Props) => {
         <SelectField
           options={paginations}
           onChange={onPaginationChange}
-          selected={[itemPerPage.toString()]}
+          selected={itemPerPage.toString()}
           width="40px"
         />
       </div>

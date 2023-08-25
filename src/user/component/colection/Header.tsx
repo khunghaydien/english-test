@@ -10,7 +10,7 @@ type Props = {
 const Header = ({ type }: Props) => {
   const [selected, setSelected] = useState({
     type: ielts[0].value,
-    sortBy: [ieltsSortBy[0].value],
+    sortBy: "newest",
   });
 
   useEffect(() => {}, [selected]);
@@ -19,7 +19,7 @@ const Header = ({ type }: Props) => {
     setSelected({ ...selected, type });
   };
 
-  const onChangeSort = (sortBy: string[]) => {
+  const onChangeSort = (sortBy: string) => {
     setSelected({ ...selected, sortBy });
   };
   const ROOT = "test-colection-header";

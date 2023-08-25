@@ -1,5 +1,4 @@
 import SelectField from "@/common/field/SelectField";
-import { Instruction } from "./AnswerTheQuestion";
 import { Answer, Question } from "./Choice";
 import { Option } from "@/common/field/Option";
 type Props = {
@@ -7,7 +6,7 @@ type Props = {
   clozePassage?: string;
   answered: Answer;
   onChange: (answer: Answer) => void;
-  instruction?: Instruction;
+  instruction?: Option;
 };
 const FillClozePassage = ({
   question,
@@ -23,11 +22,6 @@ const FillClozePassage = ({
     newAnswered[number] = answer;
     onChange(newAnswered);
   };
-  let option: Option[] = [];
-  if (instruction)
-    Object.keys(instruction).map((key) => {
-      option.push({ value: key, text: instruction[key] });
-    });
   const questions = Object.keys(question);
   parts?.forEach((part, index) => {
     if (index < part.length) {
@@ -35,16 +29,14 @@ const FillClozePassage = ({
         <span key={index}>
           <span>{part}</span>
           {questions[index] && (
-            <>
-              <span className="question-detail-item--number">
-                {questions[index]}
-              </span>
+            <span>
+              <span className="number">{questions[index]}</span>
               {instruction ? (
                 <SelectField
-                  selected={[answered[questions[index]]]}
-                  options={option}
-                  onChange={(selected: string[]) =>
-                    handleAnswer(selected[0], questions[index])
+                  selected={answered[questions[index]]}
+                  options={instruction}
+                  onChange={(selected: string) =>
+                    handleAnswer(selected, questions[index])
                   }
                   width="120px"
                 />
@@ -58,7 +50,7 @@ const FillClozePassage = ({
                   type="text"
                 />
               )}
-            </>
+            </span>
           )}
         </span>
       );
