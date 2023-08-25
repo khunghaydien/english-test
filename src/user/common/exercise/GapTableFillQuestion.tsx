@@ -1,6 +1,7 @@
 import { Option } from "@/common/field/Option";
-import { Answer, Question } from "./Choice";
-import FillClozePassage from "./FillClozePassage";
+import FillClozePassage from "./GapFillQuestion";
+import { Answer, Question } from "@/model/exam";
+import { styled } from "styled-components";
 
 export type Cell = {
   clozePassage: string;
@@ -8,18 +9,18 @@ export type Cell = {
 };
 type Props = {
   clozeTable: Cell[][];
-  answered: Answer;
+  answer: Answer;
   onChange: (answer: Answer) => void;
   instruction?: Option;
 };
-const FillClozeTable = ({
+const GapTableFillQuestion = ({
   clozeTable,
-  answered,
+  answer,
   onChange,
   instruction,
 }: Props) => {
   return (
-    <table border={1}>
+    <GapTableFill>
       <tbody>
         {clozeTable.map((row, idx) => (
           <tr key={idx}>
@@ -28,7 +29,7 @@ const FillClozeTable = ({
                 <FillClozePassage
                   clozePassage={cell.clozePassage}
                   question={cell.question || {}}
-                  answered={answered}
+                  answer={answer}
                   onChange={onChange}
                   instruction={instruction}
                 />
@@ -37,8 +38,9 @@ const FillClozeTable = ({
           </tr>
         ))}
       </tbody>
-    </table>
+    </GapTableFill>
   );
 };
 
-export default FillClozeTable;
+export default GapTableFillQuestion;
+const GapTableFill = styled.table``;

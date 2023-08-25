@@ -2,197 +2,337 @@ import Global from "@/container/common/global";
 import "./index.scss";
 import classNames from "classnames";
 import { useEffect, useState, useRef } from "react";
-import QuestionSet, { QuestionProps } from "@/user/common/question/QuestionSet";
-import { Answer } from "@/user/common/question/QuestionDetail";
+import { Answer, ExerciseDetail } from "@/model/exam";
+import Exercise from "@/user/common/exercise";
 
 type Props = {
   reading: any;
-  answered: Answer;
+  answer: Answer;
   fetchReading: () => void;
 };
-export default function Reading({ reading, fetchReading, answered }: Props) {
+
+type Exercise = {
+  type: string;
+  exercise: string;
+  exerciseDetail: ExerciseDetail;
+  hint?: string;
+};
+
+const exercise: Exercise[] = [
+  {
+    type: "BLANK_FILL_QUESTION",
+    exercise: "chúng ta không giống nhau",
+    exerciseDetail: {
+      question: {
+        1: {
+          question: "a charming lady in Nash’s eyes",
+        },
+        2: {
+          question:
+            " Nash’s passion for following particularly appreciated artists",
+        },
+        3: {
+          question: "Nash’s works with contrast elements",
+        },
+        4: {
+          question:
+            "the noticeable impact on Nash’s growth exerted from the rearing environment",
+        },
+        5: {
+          question:
+            "high praise for Nash’s unique taste of presenting his works",
+        },
+      },
+      isMultipleChoice: undefined,
+      instruction: undefined,
+      clozePassage: undefined,
+      clozeTable: undefined,
+    },
+    hint: "",
+  },
+  {
+    type: "BLANK_FILL_QUESTION",
+    exercise: "chúng ta không giống nhau",
+    exerciseDetail: {
+      question: {
+        6: {
+          question: "a charming lady in Nash’s eyes",
+        },
+        7: {
+          question:
+            " Nash’s passion for following particularly appreciated artists",
+        },
+        8: {
+          question: "Nash’s works with contrast elements",
+        },
+        9: {
+          question:
+            "the noticeable impact on Nash’s growth exerted from the rearing environment",
+        },
+        10: {
+          question:
+            "high praise for Nash’s unique taste of presenting his works",
+        },
+      },
+      instruction: {
+        A: {
+          text: "A",
+        },
+        B: {
+          text: "B",
+        },
+        C: {
+          text: "C",
+        },
+        D: {
+          text: "D",
+        },
+        E: {
+          text: "E",
+        },
+      },
+    },
+  },
+  {
+    type: "GAP_FILL_QUESTION",
+    exercise: "chúng ta không giống nhau",
+    exerciseDetail: {
+      question: {
+        11: {},
+        12: {},
+        13: {},
+        14: {},
+        15: {},
+      },
+      clozePassage: `The Earth could become uninhabitable, like other planets, through a major change in the ___
+      . Volcanic eruptions of ___
+      can lead to shortages of ___
+      in a wide area. An asteroid hitting the Earth could create a ___
+      that would result in a new ___
+      . Plans are being made to use ___
+      to deflect asteroids heading for the Earth.`,
+      instruction: {
+        yes: { text: "Yes" },
+        no: { text: "No" },
+        notGiven: { text: "Not Given" },
+      },
+    },
+  },
+  {
+    type: "GAP_FILL_QUESTION",
+    exercise: "chúng ta không giống nhau",
+    exerciseDetail: {
+      question: {
+        16: {},
+        17: {},
+        18: {},
+        19: {},
+        20: {},
+      },
+      clozePassage: `The Earth could become uninhabitable, like other planets, through a major change in the ___
+      . Volcanic eruptions of ___
+      can lead to shortages of ___
+      in a wide area. An asteroid hitting the Earth could create a ___
+      that would result in a new ___
+      . Plans are being made to use ___
+      to deflect asteroids heading for the Earth.`,
+    },
+  },
+  {
+    type: "MULTIPLE_CHOICE_QUESTION",
+    exercise: "chúng ta không giống nhau",
+    exerciseDetail: {
+      question: {
+        21: {
+          question: "What is the writer’s purpose in Reading Passage 2?",
+          option: {
+            A: "to propose a new theory about the causes of natural disasters",
+            B: "to prove that generally held beliefs about the future are all mistaken",
+            C: "to present a range of opinions currently held by scientists",
+            D: "to argue the need for a general change in behavior",
+          },
+        },
+        24: {
+          question: "What is the writer’s purpose in Reading Passage 2?",
+          option: {
+            A: "to propose a new theory about the causes of natural disasters",
+            B: "to prove that generally held beliefs about the future are all mistaken",
+            C: "to present a range of opinions currently held by scientists",
+            D: "to argue the need for a general change in behavior",
+          },
+        },
+      },
+    },
+  },
+  {
+    type: "MULTIPLE_CHOICE_QUESTION",
+    exercise: "chúng ta không giống nhau",
+    exerciseDetail: {
+      question: {
+        22: {
+          question: "What is the writer’s purpose in Reading Passage 2?",
+          option: {
+            A: "to propose a new theory about the causes of natural disasters",
+            B: "to prove that generally held beliefs about the future are all mistaken",
+            C: "to present a range of opinions currently held by scientists",
+            D: "to argue the need for a general change in behavior",
+          },
+        },
+        23: {
+          question: "What is the writer’s purpose in Reading Passage 2?",
+          option: {
+            A: "to propose a new theory about the causes of natural disasters",
+            B: "to prove that generally held beliefs about the future are all mistaken",
+            C: "to present a range of opinions currently held by scientists",
+            D: "to argue the need for a general change in behavior",
+          },
+        },
+      },
+      isMultipleChoice: true,
+    },
+  },
+  {
+    type: "GAP_TABLE_FILL_QUESTION",
+    exercise: "chúng ta không giống nhau",
+    exerciseDetail: {
+      clozeTable: [
+        [
+          {
+            clozePassage: `
+      Origins:`,
+            question: {},
+          },
+          {
+            clozePassage: `
+            Word ‘Viking’ is ___ 
+            Vikings came from Scandinavia.`,
+            question: {
+              25: {},
+            },
+          },
+        ],
+        [
+          {
+            clozePassage: `Dates of the Viking Age`,
+            question: {},
+          },
+          {
+            clozePassage: `In Britain: AD ___ -1066 Length varies elsewhere`,
+            question: {
+              26: {},
+            },
+          },
+        ],
+        [
+          {
+            clozePassage: `Territorial extent:`,
+            question: {},
+          },
+          {
+            clozePassage: `In doubt – but most of Europe
+            Possibly raided as far away as ___
+            `,
+            question: {
+              27: {},
+            },
+          },
+        ],
+        [
+          {
+            clozePassage: `End of the Viking Age:`,
+            question: {},
+          },
+          {
+            clozePassage: `Vikings had assimilated into ___ 
+            , & adopted a new ___ 
+            system.
+            `,
+            question: {
+              28: {},
+            },
+          },
+        ],
+      ],
+      instruction: {
+        yes: { text: "Yes" },
+        no: { text: "No" },
+        notGiven: { text: "Not Given" },
+      },
+    },
+  },
+  {
+    type: "GAP_TABLE_FILL_QUESTION",
+    exercise: "chúng ta không giống nhau",
+    exerciseDetail: {
+      clozeTable: [
+        [
+          {
+            clozePassage: `
+      Origins:`,
+            question: {},
+          },
+          {
+            clozePassage: `
+            Word ‘Viking’ is ___ 
+            Vikings came from Scandinavia.`,
+            question: {
+              25: {},
+            },
+          },
+        ],
+        [
+          {
+            clozePassage: `Dates of the Viking Age`,
+            question: {},
+          },
+          {
+            clozePassage: `In Britain: AD ___ -1066 Length varies elsewhere`,
+            question: {
+              26: {},
+            },
+          },
+        ],
+        [
+          {
+            clozePassage: `Territorial extent:`,
+            question: {},
+          },
+          {
+            clozePassage: `In doubt – but most of Europe
+            Possibly raided as far away as ___
+            `,
+            question: {
+              27: {},
+            },
+          },
+        ],
+        [
+          {
+            clozePassage: `End of the Viking Age:`,
+            question: {},
+          },
+          {
+            clozePassage: `Vikings had assimilated into ___ 
+            , & adopted a new ___ 
+            system.
+            `,
+            question: {
+              28: {},
+            },
+          },
+        ],
+      ],
+    },
+  },
+];
+export default function Reading({ reading, fetchReading, answer }: Props) {
   useEffect(() => {
     fetchReading();
   }, []);
-  const [currentAnsered, setCurrentAnswered] = useState(answered);
-  const questions: QuestionProps[] = [
-    {
-      type: "YES_NO_NOTGIVEN",
-      options: [
-        {
-          text: "Yes",
-          value: "Yes",
-        },
-        {
-          text: "No",
-          value: "No",
-        },
-        {
-          text: "Not Given",
-          value: "NotGiven",
-        },
-      ],
-      question: {
-        1: "It seems predictable that some species will disappear.",
-        2: "The nature of the Earth and human biology make it impossible for human beings to survive another million years.",
-        3: "An eruption by Yellowstone is likely to be more destructive than previous volcanic eruptions.",
-        4: "There is a greater chance of the Earth being hit by small asteroids than large ones.",
-        5: "If the world becomes uninhabitable, it is most likely to be as a result of a natural disaster.",
-      },
-      titleCaption: "Questions 1-5",
-      title:
-        "Complete the notes below.Write NO MORE THAN TWO WORDS OR A NUMBER for each answer",
-      titleHint: "Write your questionDetail in boxes 1-5 on your answer sheet.",
-    },
-    {
-      type: "SELECT",
-      instruction: [
-        {
-          value: "",
-          instruction: "List of times & places",
-        },
-        {
-          value: "A",
-          instruction: "In the UK today",
-        },
-
-        {
-          value: "B",
-          instruction: "In 19th-century Norway",
-        },
-        {
-          value: "C",
-          instruction: "In 19th-century Sweden",
-        },
-        {
-          value: "D",
-          instruction: "In 19th-century England",
-        },
-        {
-          value: "E",
-          instruction: "In Denmark today",
-        },
-        {
-          value: "F",
-          instruction: "In 9th-century Persia",
-        },
-        {
-          value: "G",
-          instruction: "In mid-20th century Soviet Union",
-        },
-        {
-          value: "H",
-          instruction: "In Russia today",
-        },
-      ],
-      options: [
-        {
-          text: "A",
-          value: "A",
-        },
-        {
-          text: "B",
-          value: "B",
-        },
-        {
-          text: "C",
-          value: "C",
-        },
-        {
-          text: "D",
-          value: "D",
-        },
-        {
-          text: "E",
-          value: "E",
-        },
-        {
-          text: "F",
-          value: "F",
-        },
-        {
-          text: "G",
-          value: "G",
-        },
-        {
-          text: "H",
-          value: "H",
-        },
-      ],
-      question: {
-        6: "A geographer documents Viking culture as it happens.",
-        7: "A philosopher classifies cultures hierarchically.",
-        8: "Historians assert that Viking history is based more on legends than facts.",
-        9: "Young people learn about Viking cultural and economic activities.",
-        10: "People see themselves as unrelated to Vikings.",
-        11: "An historian claims Viking colonists to modem-day Canada came from his land.",
-        12: "Viking conquests are exaggerated to bolster the country 's ego after a territorial loss.",
-        13: "DNA tests show locals are closely related to Swedes.",
-      },
-      titleCaption: "Questions 6-13",
-      title:
-        "Look at the following statements and the list of times and places below.Match each statement with the correct place or time: A-H.",
-      titleHint:
-        "Write the correct letter, A-H, in boxes 6-13 on your answer sheet.",
-    },
-    {
-      type: "RADIO_BOX",
-      question: {
-        14: "Which might be a suitable title for passage?",
-      },
-      options: [
-        {
-          value: "A",
-          text: "A brief history of Vikings",
-        },
-        {
-          value: "B",
-          text: "Recent Viking discoveries",
-        },
-        {
-          value: "C",
-          text: "A modem fascination with Vikings",
-        },
-        {
-          value: "D",
-          text: "Interpretations of Viking history",
-        },
-        {
-          value: "E",
-          text: "Viking history and nationalism",
-        },
-      ],
-      titleCaption: "Question 14",
-      title: "Choose the correct letter A-E.",
-      titleHint: "Write the correct letter in box 14 on your answer sheet.",
-    },
-    {
-      type: "INPUT",
-      clozePassage:
-        "The Earth could become uninhabitable, like other planets, through a major change in the ___ . Volcanic eruptions of ___  can lead to shortages of ___ in a wide area. An asteroid hitting the Earth could create a ___  that would result in a new ___ . Plans are being made to use ___ to deflect asteroids heading for the Earth.",
-      question: {
-        15: "",
-        16: "",
-        17: "",
-        18: "",
-        19: "",
-        20: "",
-      },
-      titleCaption: "Questions 21-26",
-      title:
-        "complete the summary below. Choose NO MORE THAN TWO WORDS from the passage for each answer.",
-      titleHint: "Write your answers in boxes 21-26 on your answer sheet.",
-    },
-  ];
-  const setQuestions = [
-    {
-      caption: "SECTION 1: QUESTIONS 1-14",
-      questions,
-    },
-  ];
-  const onChange = (answered: Answer) => {
-    console.log(answered);
-    setCurrentAnswered(answered);
+  const [currentAnser, setCurrentAnswer] = useState(answer);
+  const onChange = (answer: Answer) => {
+    console.log(answer);
+    setCurrentAnswer(answer);
   };
   const leftPaneRef = useRef<HTMLDivElement>(null);
   const rightPaneRef = useRef<HTMLDivElement>(null);
@@ -240,15 +380,18 @@ export default function Reading({ reading, fetchReading, answered }: Props) {
         ref={rightPaneRef}
         style={{ width: `${100 - leftPaneWidth}%` }}
       >
-        <div className="reading-question">
-          {setQuestions.map(({ caption, questions }, idx) => (
-            <QuestionSet
-              key={idx}
-              caption={caption}
-              onChange={onChange}
-              answered={currentAnsered}
-              questions={questions}
-            />
+        <div className="reading-exercise">
+          {exercise.map(({ type, exercise, exerciseDetail, hint }, idx) => (
+            <div key={idx} className="reading-exercise-item">
+              <Exercise
+                type={type}
+                exercise={exercise}
+                exerciseDetail={exerciseDetail}
+                hint={hint}
+                onChange={onChange}
+                answer={currentAnser}
+              />
+            </div>
           ))}
         </div>
       </div>

@@ -1,25 +1,26 @@
 import SelectField from "@/common/field/SelectField";
-import { Answer, Question } from "./Choice";
 import { Option } from "@/common/field/Option";
+import { Answer, Question } from "@/model/exam";
+import { styled } from "styled-components";
 type Props = {
   question: Question;
   clozePassage?: string;
-  answered: Answer;
+  answer: Answer;
   onChange: (answer: Answer) => void;
   instruction?: Option;
 };
-const FillClozePassage = ({
+const GapFillQuestion = ({
   question,
   clozePassage,
-  answered,
+  answer,
   onChange,
   instruction,
 }: Props) => {
   const parts = clozePassage?.split("___");
   const textNodes: React.ReactNode[] = [];
-  const handleAnswer = (answer: string, number: string) => {
-    const newAnswered = { ...answered };
-    newAnswered[number] = answer;
+  const handleAnswer = (value: string, number: string) => {
+    const newAnswered = { ...answer };
+    newAnswered[number] = value;
     onChange(newAnswered);
   };
   const questions = Object.keys(question);
@@ -30,10 +31,11 @@ const FillClozePassage = ({
           <span>{part}</span>
           {questions[index] && (
             <span>
-              <span className="number">{questions[index]}</span>
+              <span className="question-number">{questions[index]}</span>
               {instruction ? (
                 <SelectField
-                  selected={answered[questions[index]]}
+                  className="question-select"
+                  selected={answer[questions[index]]}
                   options={instruction}
                   onChange={(selected: string) =>
                     handleAnswer(selected, questions[index])
@@ -45,7 +47,7 @@ const FillClozePassage = ({
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     handleAnswer(e.target.value, questions[index])
                   }
-                  className={`question-detail-item--input`}
+                  className={`question-input`}
                   key={`input-${questions[index]}`}
                   type="text"
                 />
@@ -56,7 +58,8 @@ const FillClozePassage = ({
       );
     }
   });
-  return <div className="question-type-input">{textNodes}</div>;
+  return <GapFillComponent>{textNodes}</GapFillComponent>;
 };
 
-export default FillClozePassage;
+export default GapFillQuestion;
+const GapFillComponent = styled.div``;

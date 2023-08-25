@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ieltsReading } from '@/store/action/user/test/IeltsReading';
-import { Answer } from '@/user/common/question/QuestionDetail';
+import { Answer } from '@/model/exam';
 type State ={
     reading: any,
-    answered: Answer,
+    answer: Answer,
 }
 const initialState:State = {
     reading: null,
-    answered:{}
+    answer:{}
 }
 const reading = createSlice({
   name: 'ieltsReading',

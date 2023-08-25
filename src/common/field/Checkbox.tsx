@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import "./Checkbox.scss";
 type Option = {
   [key: string]: string;
@@ -6,8 +7,9 @@ type Props = {
   onChange: (value: string) => void;
   options?: Option;
   value: string;
+  className: string;
 };
-const Checkbox = ({ onChange, options = {}, value }: Props) => {
+const Checkbox = ({ onChange, options = {}, value, className }: Props) => {
   let checkedList = value ? value.split(",") : [];
   const handleChange = (key: string) => {
     if (checkedList.includes(key)) {
@@ -18,7 +20,7 @@ const Checkbox = ({ onChange, options = {}, value }: Props) => {
     onChange(checkedList.join(","));
   };
   return (
-    <div className="checkbox-group">
+    <div className={classNames("checkbox-group", className)}>
       {Object.keys(options).map((key) => (
         <div key={key} className="checkbox-group-item">
           <div className="checkbox-group-value">{key}</div>
