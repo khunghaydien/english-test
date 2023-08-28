@@ -1,0 +1,66 @@
+@import "@/style/variant";
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  position: relative;
+  .icon {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+  &-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &-icon {
+    width: 32px;
+    height: 32px;
+    img {
+      border-radius: 10px;
+    }
+  }
+
+  .icon-person {
+    background: $primary-2;
+    border-radius: 100%;
+  }
+
+  &-option {
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    left: 0;
+    background: $secondary-1;
+    border-radius: 10px;
+    &-up {
+      bottom: 50px;
+    }
+    &-down {
+      top: 42px;
+    }
+    &-list,
+    &-logout {
+      padding: 5px;
+    }
+    &-logout {
+      border-top: 0.5px solid $white-7;
+    }
+    &-item {
+      display: flex;
+      height: 44px;
+      border-radius: 8px;
+      align-items: center;
+      padding: 0 10px;
+      &:hover {
+        background: $secondary-2;
+      }
+      &.active {
+        background: $secondary-2;
+      }
+    }
+  }
+}

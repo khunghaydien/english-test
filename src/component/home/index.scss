@@ -1,0 +1,46 @@
+@import "@/style/variant";
+
+.menu {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  background: $secondary-1;
+  color: #fff;
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 1200px;
+  }
+  &-left {
+    width: 50px;
+  }
+  &-main {
+    display: flex;
+    align-items: center;
+  }
+  &-right {
+    display: flex;
+    align-items: center;
+  }
+  .dropdown {
+    &-text {
+      width: 250px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+    }
+  }
+  .icon-home,
+  .icon-person,
+  .icon-bell {
+    font-size: 32px;
+    cursor: pointer;
+  }
+  .profile {
+    justify-content: end;
+    width: 200px;
+  }
+}

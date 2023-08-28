@@ -38,7 +38,7 @@ const SelectField = ({
 
   const selectedText = Object.keys(options)
     .filter((key) => currentSelected.split(",").includes(key))
-    .map((key) => options[key].text)
+    .map((key) => options[key]?.text)
     .join(",");
 
   const OptionStyle: React.CSSProperties = {
@@ -61,7 +61,7 @@ const SelectField = ({
         className="select-selected"
         onClick={() => setIsOption(!isOption)}
       >
-        <span style={selectSelectedStyle}>{selectedText || ""}</span>
+        <span style={selectSelectedStyle}>{selectedText}</span>
         <span
           className={classNames(
             "select-selected--icon",

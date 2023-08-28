@@ -3,11 +3,11 @@ import Button from "../button";
 
 type OptionInfo = {
   icon?: string;
-  text: string;
+  text?: string;
 };
 
 export type Option = {
-  [key: string]: OptionInfo;
+  [key: string]: OptionInfo | null;
 };
 
 export type PropsOptions = {
@@ -75,16 +75,16 @@ const Option = ({
                 })}
                 onClick={() => onClickOption(key)}
               >
-                {options[key].icon && (
+                {options[key]?.icon && (
                   <div
                     className={classNames(
                       "option-item--icon",
-                      options[key].icon
+                      options[key]?.icon
                     )}
                   ></div>
                 )}
                 <div className="option-item--text" style={optionItemWidthStyle}>
-                  {options[key].text}
+                  {options[key]?.text}
                 </div>
               </div>
             </div>

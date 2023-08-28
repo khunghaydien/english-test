@@ -1,0 +1,46 @@
+.reading {
+  width: 100%;
+  display: flex;
+  position: relative;
+  height: calc(100vh - 154px);
+  top: 99px;
+  .gutter-horizontal {
+    width: 10px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: ew-resize;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+  }
+  .left-pane,
+  .right-pane {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+  }
+  .left-pane {
+    left: 0;
+  }
+  .right-pane {
+    right: 0;
+  }
+  &-passage {
+    background: #d7e6dc;
+    overflow: auto;
+    padding: 20px;
+    height: calc(100vh - 194px);
+  }
+  &-exercise {
+    overflow: auto;
+    padding: 20px;
+    height: calc(100vh - 194px);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    &-item {
+      width: 100%;
+    }
+  }
+}

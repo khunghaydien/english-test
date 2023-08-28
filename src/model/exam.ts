@@ -1,11 +1,11 @@
 import { Option } from "@/common/field/Option";
-import { Cell } from "@/user/common/exercise/GapTableFillQuestion";
+import { Cell } from "@/common/exercise/GapTableFillQuestion";
 
 type QuestionOption = {
-    [key:string]:string
-}
+  [key: string]: string;
+};
 
-export type Instruction  =  Option;
+export type Instruction = Option;
 
 export type QuestionDetail = {
   question?: string;
@@ -21,9 +21,9 @@ export type Answer = {
 };
 
 export type ExerciseDetail = {
-    question?: Question;
-    isMultipleChoice?: boolean;
-    instruction?: Option;
-    clozePassage?: string;
-    clozeTable?: Cell[][];
+  question?: Question;
+  isMultipleChoice?: boolean;
+  instruction?: Option;
+  clozePassage?: string;
+  clozeTable?: Cell[][];
 };

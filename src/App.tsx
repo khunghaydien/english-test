@@ -1,22 +1,35 @@
 import "./style/index.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./../fonts/icomoon/style.css";
-import ErrorPage from "./user/common/ErrorPage.tsx";
-import Login from "./login/Index.tsx";
-import DefaultLayout from "./user/layout/index.tsx";
-import Admin from "./admin/index.tsx";
-import TestColection from "./user/component/colection/index.tsx";
-import Test from "./user/component/test/index.tsx";
-import IeltsReaing from "./container/user/test/IeltsReaing.tsx";
+import ErrorPage from "./common/error-page/index.tsx";
+import Login from "./component/login/Index.tsx";
+import HomePage from "./page/Home.tsx";
+import Home from "./component/home/index.tsx";
+import Exam from "./component/exam/index.tsx";
+import ExamPage from "./page/Exam.tsx";
+import Admin from "./container/admin/index.tsx";
+import AdminPage from "./page/Admin.tsx";
 const router = createBrowserRouter([
   {
     path: "",
-    element: <DefaultLayout page={<TestColection />} />,
+    element: <Home />,
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
-        path: "/:menu",
-        element: <DefaultLayout page={<TestColection />} />,
+        path: "/:userPage",
+        element: <HomePage />,
+        errorElement: <ErrorPage></ErrorPage>,
+      },
+    ],
+  },
+  {
+    path: "/exam",
+    element: <Exam />,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/exam/:examType/:testId",
+        element: <ExamPage />,
         errorElement: <ErrorPage></ErrorPage>,
       },
     ],
@@ -25,15 +38,17 @@ const router = createBrowserRouter([
     path: "/admin",
     element: <Admin />,
     errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: "/admin/:adminPage",
+        element: <AdminPage />,
+        errorElement: <ErrorPage></ErrorPage>,
+      },
+    ],
   },
   {
     path: "/login",
     element: <Login />,
-    errorElement: <ErrorPage></ErrorPage>,
-  },
-  {
-    path: "/test/:testId",
-    element: <Test page={<IeltsReaing />} />,
     errorElement: <ErrorPage></ErrorPage>,
   },
 ]);

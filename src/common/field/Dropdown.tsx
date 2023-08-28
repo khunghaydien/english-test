@@ -21,8 +21,8 @@ const Dropdown = ({
   const onmouseleave = () => {
     setIsOption(false);
   };
-  const change = (value: string[]) => {
-    onDropdownChange(value[0]);
+  const change = (value: string) => {
+    onDropdownChange(value);
   };
   return (
     <div
