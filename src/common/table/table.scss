@@ -1,20 +1,181 @@
-.table {
-  width: 100%;
-  border: 1px solid #ccc;
-  &-row {
-    width: 100%;
+.commons-table {
+  position: relative;
+  height: 100%;
+
+  &::after {
+    position: absolute;
+    top: 1px;
+    right: 0;
+    display: block;
+    width: 20px;
+    height: 33px;
+    background-color: black;
+    content: "";
+  }
+
+  &__head {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    background-color: black;
+    overflow-y: scroll;
+  }
+
+  &__head-row {
+    display: flex;
+    height: 35px;
+    align-items: center;
+  }
+
+  &__filter-row {
     display: flex;
     align-items: center;
-    height: 32px;
-    border-bottom: 1px solid #ccc;
-    &:last-child {
-      border: none;
+  }
+
+  &__addon {
+    display: flex;
+    min-width: 1.5em;
+    height: 100%;
+    flex-flow: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  &__cell-head,
+  &__cell-filter {
+    padding-right: 5px;
+    padding-left: 5px;
+    color: white;
+  }
+
+  &__cell-filter {
+    input.slds-input,
+    select.slds-input {
+      padding: 0 0.4rem;
     }
   }
-  &-colume {
-    padding: 5px;
-    &:first-child {
-      width: 20%;
+
+  &__cell-filter {
+    padding-bottom: 5px;
+  }
+
+  &__cell-head--amount {
+    color: #2728ff;
+  }
+
+  &__cell-head--checkbox,
+  &__cell-filter--checkbox {
+    flex: 0 0 30px;
+  }
+
+  &__body {
+    $headerHeight: 35px + 2px;
+    $headerHeightWithFilter: $headerHeight + 37px;
+
+    height: calc(100% - #{$headerHeight});
+    overflow-y: scroll;
+
+    &--use-filter {
+      height: calc(100% - #{$headerHeightWithFilter});
     }
+  }
+
+  &__input-wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding-left: 5px;
+
+    input {
+      height: 16px;
+      width: 16px;
+    }
+  }
+
+  &__checkbox-hide {
+    display: none;
+  }
+}
+.commons-table-body-row {
+  &:hover {
+    background-color: black;
+  }
+
+  &--is-browsing,
+  &--is-browsing:hover {
+    background-color: gray;
+  }
+
+  &__selection {
+    display: flex;
+    min-height: 50px;
+    align-content: center;
+  }
+
+  &__cell {
+    display: flex;
+    align-items: center;
+    padding-right: 5px;
+    padding-left: 5px;
+    border-bottom: 1px solid black;
+    word-break: break-all;
+  }
+
+  &__cell--addon {
+    padding: 0;
+  }
+
+  &__cell--select {
+    flex: 0 0 30px;
+
+    input {
+      height: 16px;
+      width: 16px;
+
+      &:disabled {
+        background: #aaa;
+        border-radius: 2px;
+        outline: none;
+        appearance: none;
+        pointer-events: none;
+      }
+    }
+  }
+
+  &__cell-inner {
+    display: flex;
+    height: 100%;
+    flex-grow: 1;
+    align-items: center;
+  }
+
+  &__input-wrapper {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding-left: 5px;
+    outline: none;
+    display: inline-flex;
+  }
+
+  &__cell-name-body {
+    display: inline-flex;
+  }
+
+  &__cell-name-icon {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 auto;
+    margin-right: 10px;
+    background-color: #333;
+    border-radius: 50%;
+  }
+
+  &__cell-name-department {
+    color: white;
+  }
+
+  &__checkbox-hide {
+    display: none;
   }
 }
