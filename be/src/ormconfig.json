@@ -2,7 +2,7 @@
     "type": "postgres",
     "host": "localhost",
     "port": 5432,
-    "username": "root",
+    "username": "postgres",
     "password": "09022000",
     "database": "english",
     "entities": ["dist/**/*.entity{.ts,.js}"],
