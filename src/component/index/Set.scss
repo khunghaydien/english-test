@@ -1,0 +1,70 @@
+@import "@/style/variant";
+.exam-set {
+  padding: 20px;
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    .image {
+      width: 180px;
+    }
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    &--header {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid;
+      height: 150px;
+      &-item {
+        width: 150px;
+        text-align: center;
+        &:first-child {
+          text-align: left;
+          border-right: 1px solid;
+          height: 150px;
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid;
+    &--name {
+      width: 150px;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      border-right: 1px solid;
+    }
+    &--exam {
+      display: flex;
+      align-items: center;
+    }
+  }
+  .practice-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 150px;
+    gap: 10px;
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 80px;
+      height: 80px;
+      border-radius: 100%;
+      border: 3px solid #ddd;
+    }
+    &--icon {
+      font-size: 30px;
+      color: #ccc;
+    }
+  }
+}

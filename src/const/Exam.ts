@@ -40,6 +40,7 @@ export const mocExam = [
     viewed: 12312,
     published: "07 Nov 2018",
     tested: 923452,
+    process: 100,
   },
   {
     id: "2",
@@ -53,6 +54,7 @@ export const mocExam = [
     viewed: 12312,
     published: "07 Nov 2018",
     tested: 923452,
+    process: 100,
   },
   {
     id: "3",
@@ -66,6 +68,7 @@ export const mocExam = [
     viewed: 12312,
     published: "07 Nov 2018",
     tested: 923452,
+    process: 100,
   },
   {
     id: "4",
@@ -79,6 +82,7 @@ export const mocExam = [
     viewed: 12312,
     published: "07 Nov 2018",
     tested: 923452,
+    process: 100,
   },
 ];
 export const exerciseType = {
@@ -127,3 +131,48 @@ export const mocExamFeature: MocExamFeature = {
       "Tính năng mới giúp bạn theo dõi được quá trình ôn luyện và cải thiện từng ngày. Bạn biết band điểm trung bình, tổng thời gian luyện thi, các dạng câu hỏi và đề thi bạn cần cải thiện nhiều hơn để hoàn thành mục tiêu.",
   },
 };
+export const mocExamSet = [
+  {
+    id: "1",
+    name: "IELTS Recent Mock Tests Volume 6",
+    imageUrl: image,
+    imageAlt: "test image",
+    vote: {
+      star: 3,
+      quantity: 1000,
+    },
+    viewed: 12312,
+    published: "07 Nov 2018",
+    tested: 923452,
+    type: "toeic",
+    exams: mocExam,
+  },
+  {
+    id: "2",
+    name: "IELTS Recent Mock Tests Volume 6",
+    imageUrl: image,
+    imageAlt: "test image",
+    vote: {
+      star: 3,
+      quantity: 1000,
+    },
+    viewed: 12312,
+    published: "07 Nov 2018",
+    tested: 923452,
+    exams: mocExam,
+  },
+  {
+    id: "2",
+    name: "IELTS Recent Mock Tests Volume 6",
+    imageUrl: image,
+    imageAlt: "test image",
+    vote: {
+      star: 3,
+      quantity: 1000,
+    },
+    viewed: 12312,
+    published: "07 Nov 2018",
+    tested: 923452,
+    exams: mocExam,
+  },
+];

@@ -7,23 +7,19 @@ import { mocExamFeature } from "@/const/Exam";
 import "./Home.scss";
 import { useState } from "react";
 import classNames from "classnames";
-type Props = {
-  onExamNewestClick: (id: string) => void;
-};
-const ExamNewest = (onExamNewestClick: (id: string) => void) => {
-  const handleExamNewestClick = (id: string) => {
-    onExamNewestClick(id);
-  };
+import { NavLink } from "react-router-dom";
+
+const ExamNewest = () => {
   return (
     <section className="exam-newest">
       <div className="container">
         <div className="exam-newest__title title">Các bộ đề IELTS mới nhất</div>
         <div className="exam-newest__list">
           {mocExam.map((mocExam, idx) => (
-            <div
+            <NavLink
               className="exam-newest__item"
               key={idx}
-              onClick={() => handleExamNewestClick(mocExam.id)}
+              to={`/exam-set/${mocExam.id}`}
             >
               <div className="exam-newest__item--image">
                 <img src={mocExam.imageUrl} alt={mocExam.imageAlt} />
@@ -34,7 +30,7 @@ const ExamNewest = (onExamNewestClick: (id: string) => void) => {
                 star={mocExam.vote.star}
                 quantity={mocExam.vote.quantity}
               ></Vote>
-            </div>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -42,18 +38,13 @@ const ExamNewest = (onExamNewestClick: (id: string) => void) => {
   );
 };
 const Tip = () => {
-  const handleTipClick = (id: string) => {};
   return (
     <section className="tip">
       <div className="container">
         <div className="tip__title title">Tip hay mỗi ngày</div>
         <div className="tip__list">
           {mocTip.map((mocTip, idx) => (
-            <div
-              className="tip__item"
-              key={idx}
-              onClick={() => handleTipClick(mocTip.id)}
-            >
+            <NavLink className="tip__item" key={idx} to={`/tip/${mocTip.id}`}>
               <div className="tip__item--header">
                 <div className="tip__item--image">
                   <img src={mocTip.imageUrl} alt={mocTip.imageAlt} />
@@ -79,7 +70,7 @@ const Tip = () => {
                   {mocTip.viewed}
                 </div>
               </div>
-            </div>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -180,10 +171,10 @@ const ExamFeature = () => {
   );
 };
 
-const Home = ({ onExamNewestClick }: Props) => {
+const Index = () => {
   return (
     <div className="home">
-      {ExamNewest(onExamNewestClick)}
+      {ExamNewest()}
       {Tip()}
       {WhyUsing()}
       {Fact()}
@@ -192,4 +183,4 @@ const Home = ({ onExamNewestClick }: Props) => {
   );
 };
 
-export default Home;
+export default Index;

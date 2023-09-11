@@ -2,12 +2,11 @@ import Button from "@/common/button";
 import Option, { Option as OptionProps } from "@/common/field/Option";
 import Countdown from "@/common/countdown";
 import Palette from "@/common/palette/Palette";
-import Vote from "@/common/vote";
 import classNames from "classnames";
-import imgae from "@/assets/ielts-volume.jpg";
 import { useState } from "react";
 import "./index.scss";
 import { Outlet } from "react-router-dom";
+import ExamSet from "@/common/exam-set";
 const actionList: OptionProps = {
   share: {
     icon: "icon-share",
@@ -60,51 +59,11 @@ const Exam = () => {
   const onChange = (value: string) => {
     console.log(value);
   };
-  const mocHeader = {
-    name: "Master IELTS General Training Volume 1",
-    imageUrl: imgae,
-    imageAlt: "test image",
-    vote: {
-      star: 3,
-      quantity: 1000,
-    },
-    viewed: 12312,
-    published: "07 Nov 2018",
-    tested: 923452,
-  };
   return (
     <div className="exam">
       <div className={`${ROOT}-header`}>
         <div className={`${ROOT}-header-container`}>
-          <div className={`${ROOT}-header-info`}>
-            <div className={`${ROOT}-header-image`}>
-              <img src={mocHeader.imageUrl} alt={mocHeader.imageAlt} />
-            </div>
-            <div>
-              <div className={`${ROOT}-header-name`}>{mocHeader.name}</div>
-              <Vote
-                star={mocHeader.vote.star}
-                quantity={mocHeader.vote.quantity}
-              />
-            </div>
-          </div>
-          <div className={`${ROOT}-header-detail`}>
-            <div className={`${ROOT}-header-published`}>
-              <span className="icon-date_range icon"></span>
-              <span>Ngày đăng: </span>
-              <span>{mocHeader.published}</span>
-            </div>
-            <div className={`${ROOT}-header-viewed`}>
-              <span className="icon-eye icon"></span>
-              <span>Lượt xem: </span>
-              <span>{mocHeader.viewed}</span>
-            </div>
-            <div className={`${ROOT}-header-tested`}>
-              <span className="icon-done icon"></span>
-              <span>Lượt thi: </span>
-              <span>{mocHeader.tested}</span>
-            </div>
-          </div>
+          <ExamSet />
           <div
             className={`${ROOT}-header-action`}
             onMouseLeave={onMouseLeaveAction}

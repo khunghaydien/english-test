@@ -1,9 +1,12 @@
 import classNames from "classnames";
 import Button from "../button";
+import { NavLink } from "react-router-dom";
 
 type OptionInfo = {
+  isLink?: boolean;
   icon?: string;
   text?: string;
+  path?: string;
 };
 
 export type Option = {
@@ -63,30 +66,58 @@ const Option = ({
       <div className="option-container">
         <div className="option-list">
           {Object.keys(options).map((key) => (
-            <div
-              className={classNames("option-item", {
-                ["active"]: selected.split(",").includes(key),
-              })}
-              key={key}
-            >
-              <div
-                className={classNames("option-item--value", {
-                  ["active"]: selected.split(",").includes(key),
-                })}
-                onClick={() => onClickOption(key)}
-              >
-                {options[key]?.icon && (
+            <div key={key}>
+              {options[key]?.isLink ? (
+                <NavLink
+                  to={`${options[key]?.path}`}
+                  className={classNames("option-item", {
+                    ["active"]: selected.split(",").includes(key),
+                  })}
+                >
+                  {options[key]?.icon && (
+                    <div
+                      className={classNames(
+                        "option-item--icon",
+                        options[key]?.icon
+                      )}
+                    ></div>
+                  )}
                   <div
-                    className={classNames(
-                      "option-item--icon",
-                      options[key]?.icon
+                    className="option-item--text"
+                    style={optionItemWidthStyle}
+                  >
+                    {options[key]?.text}
+                  </div>
+                </NavLink>
+              ) : (
+                <div
+                  className={classNames("option-item", {
+                    ["active"]: selected.split(",").includes(key),
+                  })}
+                >
+                  <div
+                    className={classNames("option-item--value", {
+                      ["active"]: selected.split(",").includes(key),
+                    })}
+                    onClick={() => onClickOption(key)}
+                  >
+                    {options[key]?.icon && (
+                      <div
+                        className={classNames(
+                          "option-item--icon",
+                          options[key]?.icon
+                        )}
+                      ></div>
                     )}
-                  ></div>
-                )}
-                <div className="option-item--text" style={optionItemWidthStyle}>
-                  {options[key]?.text}
+                    <div
+                      className="option-item--text"
+                      style={optionItemWidthStyle}
+                    >
+                      {options[key]?.text}
+                    </div>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           ))}
         </div>

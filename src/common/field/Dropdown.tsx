@@ -5,7 +5,7 @@ import "./Dropdown.scss";
 import { isEmpty } from "lodash";
 type Props = {
   text: string;
-  onDropdownChange: (value: string) => void;
+  onDropdownChange?: (value: string) => void;
 } & PropsOptions;
 const Dropdown = ({
   text,
@@ -22,7 +22,7 @@ const Dropdown = ({
     setIsOption(false);
   };
   const change = (value: string) => {
-    onDropdownChange(value);
+    if (onDropdownChange) onDropdownChange(value);
   };
   return (
     <div
