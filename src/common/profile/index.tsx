@@ -2,6 +2,7 @@ import classNames from "classnames";
 import "./index.scss";
 import { Option as OptionProps } from "../field/Option";
 import { useEffect, useRef, useState } from "react";
+import { NavLink } from "react-router-dom";
 type Props = {
   className?: string;
   onChange: (value: string) => void;
@@ -85,13 +86,10 @@ const Profile = ({
             ))}
           </div>
           <div className="profile-option-logout">
-            <div
-              className="profile-option-item"
-              onClick={() => onClick("logout")}
-            >
+            <NavLink className="profile-option-item" to={"/account/login"}>
               <span className="icon-exit_to_app icon"></span>
               Đăng xuất
-            </div>
+            </NavLink>
           </div>
         </div>
       )}
