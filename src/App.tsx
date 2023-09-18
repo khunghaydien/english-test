@@ -12,6 +12,10 @@ import MainSection from "./component/index/MainSection.tsx";
 import HomePage from "./page/Home.tsx";
 import Login from "./component/login/index.tsx";
 import LoginPage from "./page/Login.tsx";
+import { useEffect } from "react";
+import { getMessagingToken, onMessageListener } from "./notification.js";
+
+
 const router = createBrowserRouter([
   {
     path: "",
@@ -75,6 +79,13 @@ const router = createBrowserRouter([
   },
 ]);
 const App = () => {
+  useEffect(() => {
+    getMessagingToken();
+  },[])
+ useEffect(() => {
+   onMessageListener();
+})
+
   if (
     window.location.pathname === "/account" ||
     window.location.pathname === "/account/"

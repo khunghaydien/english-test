@@ -24,7 +24,8 @@
   },
   "extends": "./tsconfig.paths.json",
   "include": [
-    "src"
+    "src",
+    "firebase-messaging-sw.js"
   ],
   "references": [
     {
