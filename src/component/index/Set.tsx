@@ -4,6 +4,7 @@ import "./Set.scss";
 import classNames from "classnames";
 import { styled } from "styled-components";
 import { NavLink } from "react-router-dom";
+import Comment from "@/common/comment";
 const ROOT = "exam-set";
 type PracticeItemProps = {
   type: string;
@@ -147,6 +148,7 @@ const Set = () => {
           </div>
         ))}
       </div>
+      <Comment />
     </div>
   );
 };
