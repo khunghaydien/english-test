@@ -12,10 +12,10 @@ import MainSection from "./component/index/MainSection.tsx";
 import HomePage from "./page/Home.tsx";
 import Login from "./component/login/index.tsx";
 import LoginPage from "./page/Login.tsx";
-import { useEffect } from "react";
-import { getMessagingToken, onMessageListener } from "./notification.js";
-
-
+import { useEffect, useState } from "react";
+import { onMessageListener, requestPermission } from "./firebase.ts";
+import { useDispatch } from "react-redux";
+import { addNotification } from "./store/reducer/user/notification.ts";
 const router = createBrowserRouter([
   {
     path: "",
@@ -79,12 +79,29 @@ const router = createBrowserRouter([
   },
 ]);
 const App = () => {
+  const dispatch = useDispatch()
+  const [time, setTime] = useState(Math.floor(new Date().getTime() / 1000));
   useEffect(() => {
-    getMessagingToken();
-  },[])
- useEffect(() => {
-   onMessageListener();
-})
+    const timer = setInterval(() => {
+      setTime((prevTime) => prevTime + 1);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    requestPermission();
+    const channel = new BroadcastChannel("notifications");
+    channel.onmessage = (event) => {
+      dispatch(addNotification({ title: event.data.notification.title, body: event.data.notification.body, sentTime: time, isRead: true }))
+    }
+  }, []);
+
+  onMessageListener()
+    .then((payload: any) => {
+      console.log(payload);
+      dispatch(addNotification({ title: payload.notification.title, body: payload.notification.body, sentTime: time, isRead: true }))
+    })
+    .catch((err) => console.log('failed: ', err));
 
   if (
     window.location.pathname === "/account" ||

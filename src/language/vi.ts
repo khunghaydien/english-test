@@ -1,4 +1,11 @@
 export default {
-  TEST_1: "tesst------1",
-  TEST_2: "tesst------2",
+  //text
+  Txt_Notification: 'Thông báo',
+  Txt_All: 'Tất cả',
+  Txt_Not_Read:'Chưa đọc',
+  Txt_New : 'Mới',
+  Txt_See_All: 'Xem tất cả',
+  // message,
+  // placeholder
+  // label
 };

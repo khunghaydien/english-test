@@ -1191,19 +1191,21 @@ const emotions = [
     items: flagEmojis,
   },
 ];
+console.log(emotions);
+
 type Props = {
   onClick: (emotion: string) => void;
 };
 const Emotion = ({ onClick }: Props) => {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target);
+   onClick(e.target.value)
   };
   return (
     <div className="emotions">
       <div className="emotions-search">
         <input
           type="text"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange}
+          onChange={() => onChange}
         />
       </div>
       <div className="emotions-container"></div>
