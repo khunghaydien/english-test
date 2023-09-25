@@ -1,6 +1,6 @@
 import { Option } from "@/common/field/Option";
 import FillClozePassage from "./GapFillQuestion";
-import { Answer, Question } from "@/model/exam";
+import { Answer, Question } from "@/type/exam";
 import { styled } from "styled-components";
 
 export type Cell = {

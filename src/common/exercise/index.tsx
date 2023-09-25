@@ -3,7 +3,7 @@ import MultipleChoiceQuestion from "@/common/exercise/MultipleChoiceQuestion";
 import BlankFillQuestion from "@/common/exercise/BlankFillQuestion";
 import GapFillQuestion from "@/common/exercise/GapFillQuestion";
 import GapTableFillQuestion from "@/common/exercise/GapTableFillQuestion";
-import { Answer, ExerciseDetail } from "@/model/exam";
+import { Answer, ExerciseDetail } from "@/type/exam";
 import "./index.scss";
 type Props = {
   type: string;

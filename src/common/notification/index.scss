@@ -1,0 +1,100 @@
+@import "@/style/variant";
+
+.notification {
+    position: absolute;
+    width: 300px;
+    font-weight: bold;
+    background: $secondary-1;
+    color: #fff;
+    height: max-content;
+    max-height: 100vh;
+    top: 50px;
+    border-radius: 8px;
+    padding: 10px;
+
+    &-header {
+        margin-bottom: 10px;
+
+        &--title {
+            font-size: 28px;
+            font-weight: bold;
+        }
+    }
+
+    &-item {
+        margin-bottom: 10px;
+        border-radius: 10px;
+        padding: 5px;
+
+        &:hover {
+            background: $secondary-2;
+        }
+
+        &:last-child {
+            margin-bottom: unset;
+        }
+
+        &--avatar {
+            background: $primary-2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 100%;
+
+            img {
+                border-radius: 100%;
+            }
+        }
+
+        &--avatar.icon-person {
+            font-size: 56px;
+        }
+
+        &--content {
+            width: 100%;
+
+            .content {
+                width: calc(100% - 10px);
+            }
+
+            .title {
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            .time-ago {
+                margin-top: 5px;
+                font-size: 10px;
+            }
+        }
+    }
+
+    &-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        height: 40px;
+        border-radius: 20px;
+        cursor: pointer;
+
+        &.active {
+            background: $primary-2;
+
+            &:hover {
+                background: $primary-2;
+            }
+        }
+
+        &:hover {
+            background: $primary-1;
+        }
+    }
+
+    .not-read {
+        width: 8px;
+        height: 8px;
+        border-radius: 100%;
+        background: #fff;
+    }
+}

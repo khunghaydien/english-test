@@ -1,6 +1,6 @@
 import Radiobox from "@/common/field/Radiobox";
 import Checkbox from "@/common/field/Checkbox";
-import { Answer, Question } from "@/model/exam";
+import { Answer, Question } from "@/type/exam";
 import { styled } from "styled-components";
 
 type Props = {

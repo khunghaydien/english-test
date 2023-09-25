@@ -4,6 +4,7 @@ import Profile from "../profile";
 import { menu } from "@/const/Menu";
 import "./index.scss";
 import { NavLink } from "react-router-dom";
+import NotificationComponent from "../notification";
 const Menu = () => {
   return (
     <div className="menu">
@@ -23,10 +24,7 @@ const Menu = () => {
           ))}
         </div>
         <div className="menu-right">
-          <div
-            className={classNames("icon-bell notification icon")}
-            onClick={() => console.log("notification")}
-          ></div>
+          <NotificationComponent />
           <Profile
             userId="1"
             userAvatar=""

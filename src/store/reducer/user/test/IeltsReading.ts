@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ieltsReading } from '@/store/action/user/test/IeltsReading';
-import { Answer } from '@/model/exam';
+import { Answer } from '@/type/exam';
 type State ={
     reading: any,
     answer: Answer,

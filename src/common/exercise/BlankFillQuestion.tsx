@@ -1,6 +1,6 @@
 import SelectField from "@/common/field/SelectField";
 import { Option } from "@/common/field/Option";
-import { Answer, Question } from "@/model/exam";
+import { Answer, Question } from "@/type/exam";
 import { styled } from "styled-components";
 
 type Props = {

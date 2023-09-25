@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { Volume as VolumeProps } from "@/model/Volume";
+import { Volume as VolumeProps } from "@/type/Volume";
 import "./index.scss";
 const ROOT = "volume";
 type Props = {
